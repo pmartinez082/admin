@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="manifest" href="../pwa/manifest.json" />
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+    </style>
+</head>
+<body>
+<script type="module">
+    import {autentifikatu} from '../js/user.js';
+    window.addEventListener('DOMContentLoaded', () => {
+       autentifikatu();
+    });
+</script>
+
+<div class="back-container">
+    <form action="../">
+        <button type="submit"><img src="../pics/atzera.svg" alt="Atzera"></button>
+    </form>
+    <form action="../admin">
+        <button type="submit"><img src="../pics/birkargatu.svg" alt="Birkargatu"></button>
+    </form>
+</div>
+
+<div class="bigbutton-container">
+    <form id="adminForm4" action="../podium">
+        <button type="submit">
+            Abian dagoen txapelketaren podium-a ikusi
+            <img src="../pics/podium.svg" alt="Podium">
+        </button>
+    </form>
+    
+    <form id="adminForm2" action="../txapelketak">
+        <button type="submit">
+            Aurreko txapelketak ikusi
+            <img src="../pics/historia.svg" alt="Historia">
+        </button>
+    </form>
+
+    <form id="adminForm1" action="../berria">
+        <button type="submit">
+            Berria sortu
+            <img src="../pics/berria.svg" alt="Nueva">
+        </button>
+    </form>
+
+    <form id="adminForm3" action="../faseak">
+        <button type="submit">
+            Martxan dagoen txapelketa kudeatu
+            <img src="../pics/ezarpenak.svg" alt="Ezarpenak">
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

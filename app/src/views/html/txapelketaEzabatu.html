@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Txapelketa ezabatu</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="manifest" href="../../../pwa/manifest.json" />
+</head>
+<body>
+    <div class="back-container">
+        <form action="../../berria">
+            <button type="submit"><img src="../../pics/atzera.svg" alt="Atzera"></button>
+        </form>
+
+       
+        <form action="../txapelketa">
+            <button type="submit"><img src="../../pics/birkargatu.svg" alt="Birkargatu"></button>
+        </form>
+
+        </div>
+        <div id = "txapelketakDiv" class = "taulaDiv" ></div>
+
+
+        <div class="button-container">
+            <form id="adminForm4" action="../../podium">
+                <button type="submit"><img src="../../pics/podium.svg" alt="Podiuma ikusi"></button>
+            </form>
+            <form id="adminForm2" action="../../txapelketak">
+                <button type="submit"><img src="../../pics/historia.svg" alt="Aurreko txapelketak ikusi"></button>
+            </form>
+            <form id="adminForm1" action="../berria">
+                <button type="submit"><img src="../../pics/berria.svg" alt="Txapelketa berria sortu"></button>
+            </form>
+            <form id="adminForm3" action="../../faseak">
+                <button type="submit"><img src="../../pics/ezarpenak.svg" alt="Martxan dagoen txapelketa kudeatu"></button>
+            </form>
+        </div>
+        <script type="module">
+            import {txapelketaBistaratu} from '../../js/admin.js';
+            window.addEventListener('DOMContentLoaded', () => {
+                txapelketaBistaratu(2);
+            });
+        </script>
+        </body>
+</html>

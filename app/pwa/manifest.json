@@ -1,0 +1,30 @@
+{
+    "name": "Putxerapp_admin",
+    "short_name": "Putx_admin",
+    "description": "",
+    "orientation": "any",
+    
+    "icons": [
+      {
+        "src": "icons/putxera.png",
+        "type": "image/jpg",
+        "sizes": "868x868"
+      },
+
+      {
+
+        "src": "icons/putxera.png",
+        "type": "image/png",
+        "sizes": "868x868"
+      }
+    ],
+    
+    "id": "/",
+    "start_url": "/",
+    "theme_color": "#CCCCFF",
+    "background_color": "#ffffff",
+    "display": "standalone"
+
+    
+  }
+  

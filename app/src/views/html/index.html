@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/pwa/manifest.json" />
+  <link rel="stylesheet" href="/css/style.css">
+  <title>saioa hasi</title>
+</head>
+<body>
+  <script type="module">
+    
+    import { login, toggleLogin } from '/js/app.js';
+    document.getElementById('authForm').addEventListener('submit', login);
+    document.getElementById('toggle-button').addEventListener('click', toggleLogin);
+  </script>
+
+  <div id="logDiv" class="login-container">
+    <h1 id="formTitle">Saioa hasi</h1>
+    <form id="authForm">
+      <input type="text" id="username" placeholder="Erabiltzaile izena" required />
+      <input type="email" id="email" placeholder="Eposta kontua" hidden />
+      <input type="password" id="password" placeholder="Pasahitza" required />
+      <button type="submit">Bidali</button>
+    </form>
+    <button id="toggle-button">Ez duzu konturik? Erregistratu zaitez</button>
+    <button id="installButton" hidden>Instalatu</button>
+  </div>
+
+  
+</body>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/pwa/sw.js");
+  }
+</script>
+
+<script>
+  let deferredPrompt;
+  if (!('beforeinstallprompt' in window)) {
+    console.log('El navegador no soporta la instalación de PWAs.');
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    document.getElementById('installButton').hidden = false;
+    deferredPrompt = e;
+    
+  });
+
+  const installButton = document.getElementById('installButton');
+  installButton.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        //console.log('El usuario aceptó la instalación');
+      } else {
+        //console.log('El usuario rechazó la instalación');
+      }
+      deferredPrompt = null;
+      installButton.style.display = 'none';
+    }
+  });
+</script>
+</html>
