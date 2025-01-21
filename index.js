@@ -10,9 +10,9 @@ const app = express();
 
 //* Settings
 //const port = 443;
-//const host = '192.168.137.1'; 
+const host = '192.168.137.1'; 
 const port = 3000;
-const host = 'putxerapp.eus';
+//const host = 'putxerapp.eus';
 //* Middlewares
 app.use(morgan('dev'));
 
