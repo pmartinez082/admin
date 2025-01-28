@@ -8,16 +8,16 @@
         const path = window.location.pathname.split('/admin')[1];
    
         const routes = {
-            '/': '/html/index.html',
-            '/admin': '/html/admin.html',
-            '/berria': '/html/berria.html',
-            '/berria/txapelketa': '/html/txapelketaBerria.html',
-            '/berria/taldea': '/html/taldeBerria.html',
-            '/ezabatu/txapelketa': '/html/txapelketaEzabatu.html',
-            '/ezabatu/taldea': '/html/taldeaEzabatu.html',
-            '/txapelketak': '/html/txapelketakView.html',
-            '/faseak': '/html/faseakView.html',
-            '/podium': '/html/kalkuluak.html',
+            '/': 'admin/html/index.html',
+            '/admin': 'admin/html/admin.html',
+            '/berria': 'admin/html/berria.html',
+            '/berria/txapelketa': 'admin/html/txapelketaBerria.html',
+            '/berria/taldea': 'admin/html/taldeBerria.html',
+            '/ezabatu/txapelketa': 'admin/html/txapelketaEzabatu.html',
+            '/ezabatu/taldea': 'admin/html/taldeaEzabatu.html',
+            '/txapelketak': 'admin/html/txapelketakView.html',
+            '/faseak': 'admin/html/faseakView.html',
+            '/podium': 'admin/html/kalkuluak.html',
         };
 
         if (routes[path]) {
@@ -30,4 +30,4 @@
 <body>
     <h1>Kargatzen...</h1>
 </body>
-</html>
+<admin/html>
