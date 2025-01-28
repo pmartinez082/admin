@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="./pwa/manifest.json" />
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="manifest" href="../pwa/manifest.json" />
+  <link rel="stylesheet" href="../css/style.css">
   <title>saioa hasi</title>
 </head>
 <body>
   <script type="module">
     
-    import { login, toggleLogin } from './js/app.js';
+    import { login, toggleLogin } from '../js/app.js';
     document.getElementById('authForm').addEventListener('submit', login);
     document.getElementById('toggle-button').addEventListener('click', toggleLogin);
   </script>
@@ -31,7 +31,7 @@
 </body>
 <script>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./pwa/sw.js");
+    navigator.serviceWorker.register("../pwa/sw.js");
   }
 </script>
 

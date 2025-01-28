@@ -6,16 +6,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>txapelketa berri bat sortu</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="manifest" href="../../../pwa/manifest.json" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="manifest" href="../pwa/manifest.json" />
 </head>
 <body>
 
     <div class="back-container">
-        <form action="../../berria">
+        <form action="./taldeBerria.html">
             <button type="submit"><img src="../pics/atzera.svg" alt="Atzera"></button>
         </form>
-        <form action="../berria/txapelketa">
+        <form action="./berria.html">
             <button type="submit"><img src="../pics/birkargatu.svg" alt="Birkargatu"></button>
         </form>
     </div>
@@ -24,7 +24,7 @@
 
 
     <script type = "module">
-        import {autentifikatu} from '../../js/user.js';
+        import {autentifikatu} from '../js/user.js';
         window.addEventListener('DOMContentLoaded', () => {
             autentifikatu();
         });
@@ -65,34 +65,35 @@
 
 
 <div id = "txapelketakDiv" class = "taulaDiv" ></div>
-<form  id = "amaitu"  action = "../../txapelketak">
+<form  id = "amaitu"  action = "./txapelketakView.html">
     <button type="submit" hidden >Amaitu</button>
 </form>
 
 <div class="button-container">
-    <form id="adminForm4" action="../../podium">
-        <button type="submit"><img src="../../pics/podium.svg" alt="Podiuma ikusi"></button>
+    <form id="adminForm4" action="./kalkuluak.html">
+        <button type="submit"><img src="../pics/podium.svg" alt="Podiuma ikusi"></button>
     </form>
-    <form id="adminForm2" action="../../txapelketak">
-        <button type="submit"><img src="../../pics/historia.svg" alt="Aurreko txapelketak ikusi"></button>
+    <form id="adminForm2" action="./txapelketakView.html">
+        <button type="submit"><img src="../pics/historia.svg" alt="Aurreko txapelketak ikusi"></button>
     </form>
-    <form id="adminForm1" action="../berria">
-        <button type="submit"><img src="../../pics/berria.svg" alt="Txapelketa berria sortu"></button>
+    <form id="adminForm1" action="./berria.html">
+        <button type="submit"><img src="../pics/berria.svg" alt="Txapelketa berria sortu"></button>
     </form>
-    <form id="adminForm3" action="../../faseak">
-        <button type="submit"><img src="../../pics/ezarpenak.svg" alt="Martxan dagoen txapelketa kudeatu"></button>
+    <form id="adminForm3" action="./faseakView.html">
+        <button type="submit"><img src="../pics/ezarpenak.svg" alt="Martxan dagoen txapelketa kudeatu"></button>
     </form>
 </div>
+
 </body>
 <script type="module">
-    import {txapelketaSortu, faseaSortu} from '../../js/admin.js';
+    import {txapelketaSortu, faseaSortu} from '../js/admin.js';
 
     document.getElementById('sortu').addEventListener('click', async (event) => {
         await txapelketaSortu(event);
     });
     document.getElementById('amaitu').addEventListener('click', (event) => {
         faseaSortu(event);
-        window.location.href = '../../txapelketak';
+        window.location.href = '../txapelketak';
     });
 </script>
 
