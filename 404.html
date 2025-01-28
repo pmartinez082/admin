@@ -21,7 +21,7 @@
         };
 
         if (routes[path]) {
-            window.location.href = routes[path];
+            window.location.href = window.location.href.split("admin")[0]+"admin"+routes[path];
         } else {
             document.body.innerHTML = '<h1>404 - Ez da aurkitu</h1>';
         }
