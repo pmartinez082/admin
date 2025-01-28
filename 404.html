@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routes</title>
     <script>
-        const path = window.location.pathname;
-
+        const path = window.location.pathname.split('/admin')[1];
+   
         const routes = {
             '/': '/html/index.html',
             '/admin': '/html/admin.html',
