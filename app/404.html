@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routes</title>
+    <script>
+        const path = window.location.pathname;
+
+        const routes = {
+            '/': '/app/html/index.html',
+            '/admin': '/app/html/admin.html',
+            '/berria': '/app/html/berria.html',
+            '/berria/txapelketa': '/app/html/txapelketaBerria.html',
+            '/berria/taldea': '/app/html/taldeBerria.html',
+            '/ezabatu/txapelketa': '/app/html/txapelketaEzabatu.html',
+            '/ezabatu/taldea': '/app/html/taldeaEzabatu.html',
+            '/txapelketak': '/app/html/txapelketakView.html',
+            '/faseak': '/app/html/faseakView.html',
+            '/podium': '/app/html/kalkuluak.html',
+        };
+
+        if (routes[path]) {
+            window.location.href = routes[path];
+        } else {
+            document.body.innerHTML = '<h1>404 - Ez da aurkitu</h1>';
+        }
+    </script>
+</head>
+<body>
+    <h1>Kargatzen...</h1>
+</body>
+</html>
