@@ -11,12 +11,23 @@ const app = express();
 //* Settings
 //const port = 443;
 const host = '192.168.137.1'; 
+//const host = 'localhost';
 const port = 3000;
 //const host = 'putxerapp.eus';
 //* Middlewares
 app.use(morgan('dev'));
 
 //* Enabling cors for all request by usiing cors middleware
+/*
+app.use(cors({
+    origin: ['https://pmartinez082.github.io'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.options('*', cors()); 
+*/
+app.use(cors({ preflightContinue: true }));
+
 app.use(cors());
 
 /**
@@ -29,16 +40,17 @@ app.use(express.urlencoded( { extended:true }));
 
 //* Routes
 router(app);
-/*
+
 const options = {
-    key: fs.readFileSync('https/key.pem'),
-    cert: fs.readFileSync('https/cert.pem')
+    key: fs.readFileSync('https/server.key'),
+    cert: fs.readFileSync('https/server.cert')
 };
 
-const server = https.createServer(options, app);
- */
-
+https.createServer(options, app).listen(port, host, () => {
+    console.log(`Server running at https://${host}:${port}`);
+});
+/*
 
 app.listen(port, host, () => {
     console.log(`Server running at http://${host}:${port}`);
-});
+});*/
