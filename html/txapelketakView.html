@@ -7,7 +7,7 @@
     <link rel="manifest" href="../pwa/manifest.json" />
     <link rel="stylesheet" href="../css/style.css">
     <script type = "module">
-        import { txapelketaBistaratu } from '../../js/admin.js';
+        import { txapelketaBistaratu } from '../js/admin.js';
         window.addEventListener('DOMContentLoaded', () => {
             txapelketaBistaratu(1);
         });
@@ -16,10 +16,10 @@
 <body >
     
     <div class="back-container">
-        <form action="../admin">
+        <form action="./admin.html">
             <button type="submit"><img src="../pics/atzera.svg" alt="Atzera"></button>
         </form>
-        <form action="./txapelketak">
+        <form action="./txapelketakView.html">
             <button type="submit"><img src="../pics/birkargatu.svg" alt="Birkargatu"></button>
         </form>
     </div>
