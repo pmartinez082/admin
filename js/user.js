@@ -130,7 +130,7 @@ export async function autentifikatu(){
         const button = document.createElement('button');
         button.textContent = 'Hasi saioa';
         button.addEventListener('click', () => {
-            window.location.href = '../admin';
+            window.location.href = '../html/index.html';
         });
         mezua.appendChild(button);
         document.body.appendChild(mezua);
