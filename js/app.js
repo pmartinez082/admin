@@ -71,7 +71,7 @@ export async function login(event) {
   const logDiv = document.getElementById('logDiv');
   const role = await u.getRole();
   if(role == "admin"){
-      window.location.href = "../admin";
+      window.location.href = "./admin.html";
         
   }
   else{
