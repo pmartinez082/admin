@@ -17,7 +17,12 @@ const port = 3000;
 app.use(morgan('dev'));
 
 //* Enabling cors for all request by usiing cors middleware
-app.use(cors());
+app.use(cors({
+    origin: ['https://pmartinez082.github.io'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 /**
  * * Parse request of content-type: application/json
@@ -29,16 +34,17 @@ app.use(express.urlencoded( { extended:true }));
 
 //* Routes
 router(app);
-/*
+
 const options = {
-    key: fs.readFileSync('https/key.pem'),
-    cert: fs.readFileSync('https/cert.pem')
+    key: fs.readFileSync('https/server.key'),
+    cert: fs.readFileSync('https/server.cert')
 };
 
-const server = https.createServer(options, app);
- */
-
+https.createServer(options, app).listen(port, host, () => {
+    console.log(`Server running at https://${host}:${port}`);
+});
+/*
 
 app.listen(port, host, () => {
     console.log(`Server running at http://${host}:${port}`);
-});
+});*/
