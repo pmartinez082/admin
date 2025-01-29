@@ -11,6 +11,7 @@ const app = express();
 //* Settings
 //const port = 443;
 const host = '192.168.137.1'; 
+//const host = 'localhost';
 const port = 3000;
 //const host = 'putxerapp.eus';
 //* Middlewares
@@ -22,6 +23,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.options('*', cors()); 
 
 
 /**
