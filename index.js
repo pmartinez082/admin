@@ -18,13 +18,17 @@ const port = 3000;
 app.use(morgan('dev'));
 
 //* Enabling cors for all request by usiing cors middleware
+/*
 app.use(cors({
     origin: ['https://pmartinez082.github.io'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.options('*', cors()); 
+*/
+app.use(cors({ preflightContinue: true }));
 
+app.use(cors());
 
 /**
  * * Parse request of content-type: application/json
