@@ -19,8 +19,8 @@
       }
     ],
     
-    "id": "/",
-    "start_url": "/",
+    "id": "/admin",
+    "start_url": "/admin",
     "theme_color": "#CCCCFF",
     "background_color": "#ffffff",
     "display": "standalone"
