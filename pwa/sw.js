@@ -5,6 +5,7 @@ const APP_STATIC_RESOURCES = [
   "/icons/putxera.jpg",
   "/icons/putxera.png",
   "/css/style.css",
+  "404.html",
   "/html/admin.html",
   "/html/berria.html",
   "/html/faseakView.html",
@@ -27,31 +28,35 @@ const APP_STATIC_RESOURCES = [
   "/js/taldea.js",
   "/js/txapelketa.js",
   "/js/user.js",
-
 ];
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/pwa/sw.js").then(
+    (registration) => {
+      console.log("Service worker registration successful:", registration);
+    },
+    (error) => {
+      console.log(`Service worker registration failed: ${error}`);
+    }
+  );
+} else {
+  console.log("Service workers are not supported.");
+}
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then(
-      (registration) => {
-        console.log("Service worker registration successful:", registration);
-      },
-      (error) => {
-        console.log(`Service worker registration failed: ${error}`);
-      },
-    );
-  } else {
-    console.log("Service workers are not supported.");
-  }
-
-  // On install, cache the static resources
+// On install, cache the static resources
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-      cache.addAll(APP_STATIC_RESOURCES);
+      try {
+        await cache.addAll(APP_STATIC_RESOURCES);
+        console.log("Cache added successfully");
+      } catch (error) {
+        console.error("Failed to cache resources", error);
+      }
     })()
   );
+  self.skipWaiting(); // Tomar control inmediato
 });
 
 // delete old caches on activate
@@ -62,37 +67,33 @@ self.addEventListener("activate", (event) => {
       await Promise.all(
         names.map((name) => {
           if (name !== CACHE_NAME) {
+            console.log(`Deleting old cache: ${name}`);
             return caches.delete(name);
           }
         })
       );
-      await clients.claim();
+      await clients.claim(); // Reclamar clientes activos
     })()
   );
 });
 
 // On fetch, intercept server requests
-// and respond with cached responses instead of going to network
 self.addEventListener("fetch", (event) => {
-  // As a single page app, direct app to always go to cached home page.
-  if (event.request.mode === "navigate") {
-    event.respondWith(caches.match("/"));
-    return;
-  }
-
-  // For all other requests, go to the cache first, and then the network.
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       const cachedResponse = await cache.match(event.request);
       if (cachedResponse) {
-        // Return the cached response if it's available.
         return cachedResponse;
       }
-      // If resource isn't in the cache, return a 404.
-      return new Response(null, { status: 404 });
+      try {
+        const networkResponse = await fetch(event.request);
+        cache.put(event.request, networkResponse.clone());
+        return networkResponse;
+      } catch (error) {
+        console.error("Fetch failed; returning offline page instead.", error);
+        return new Response("Offline: Resource not found", { status: 404 });
+      }
     })()
   );
 });
-  
-  
