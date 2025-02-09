@@ -1,7 +1,7 @@
 const VERSION = "4";
 const CACHE_NAME = `admin-bertsio-${VERSION}`;
 const APP_STATIC_RESOURCES = [
-  "/",
+  
   "../icons/putxera.jpg",
   "../icons/putxera.png",
   "../css/style.css",
@@ -28,6 +28,26 @@ const APP_STATIC_RESOURCES = [
   "../js/taldea.js",
   "../js/txapelketa.js",
   "../js/user.js",
+  "../pics/atzera.svg",
+  "../pics/berria.svg",
+  "../pics/birkargatu.svg",
+  "../pics/chef.svg",
+  "../pics/epaBerria.svg",
+  "../pics/epaEzabatu.svg",
+  "../pics/epaitu.svg",
+  "../pics/ezarpenak.svg",
+  "../pics/historia.svg",
+  "../pics/mahaia.svg",
+  "../pics/menu.svg",
+  "../pics/podium.svg",
+  "../pics/txapelketa.svg",
+  "../pics/pot.svg",
+  "../pics/profila.svg",  
+  "../pics/taldeaEzabatu.svg",
+  "../pics/taldeBerria.svg",
+  "../pics/txapBerria.svg",
+  "../pics/txapEzabatu.svg",
+
 ];
 
 if ("serviceWorker" in navigator) {
