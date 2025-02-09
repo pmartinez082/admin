@@ -42,7 +42,13 @@ export const getFasearenEbaluazioak = async (event) => {
     event.preventDefault();
     const idFasea = event.target.id.split('-')[1];
     try {
-        const response = await fetch(`http://192.168.137.1:3000/ebaluazioa/get/fasearenEbaluazioak/${idFasea}`);
+        const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            
+        });
         if (response.ok) {
             const data = await response.json();
             //console.log(data);
