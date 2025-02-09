@@ -1,5 +1,5 @@
 const VERSION = "4";
-const CACHE_NAME = `admin-bertsio-${VERSION}`;
+const CACHE_NAME = `CACHE_${VERSION}`;
 const APP_STATIC_RESOURCES = [
   
   "../icons/putxera.jpg",
@@ -40,7 +40,6 @@ const APP_STATIC_RESOURCES = [
   "../pics/mahaia.svg",
   "../pics/menu.svg",
   "../pics/podium.svg",
-  "../pics/txapelketa.svg",
   "../pics/pot.svg",
   "../pics/profila.svg",  
   "../pics/taldeaEzabatu.svg",
@@ -103,21 +102,23 @@ self.addEventListener("activate", (event) => {
 
 // On fetch, intercept server requests
 self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    
+    event.respondWith(
+      caches.match("/html/index.html").then((cachedResponse) => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+    return;
+  }
+
+
   event.respondWith(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cachedResponse = await cache.match(event.request);
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      try {
-        const networkResponse = await fetch(event.request);
-        cache.put(event.request, networkResponse.clone());
-        return networkResponse;
-      } catch (error) {
-        console.error("Fetch failed; returning offline page instead.", error);
-        return new Response("Offline: Resource not found", { status: 404 });
-      }
-    })()
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request).catch(() => {
+        return new Response("Offline: Recurso no disponible", { status: 404 });
+      });
+    })
   );
 });
+
