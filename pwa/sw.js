@@ -48,16 +48,20 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-      try {
-        await cache.addAll(APP_STATIC_RESOURCES);
-        console.log("Cache added successfully");
-      } catch (error) {
-        console.error("Failed to cache resources", error);
+      for (const resource of APP_STATIC_RESOURCES) {
+        try {
+          console.log(`Intentando cachear: ${resource}`);
+          await cache.add(resource);
+          console.log(`Cacheado con éxito: ${resource}`);
+        } catch (error) {
+          console.error(`❌ Error cacheando ${resource}:`, error);
+        }
       }
     })()
   );
-  self.skipWaiting(); // Tomar control inmediato
+  self.skipWaiting(); // Forzar activación inmediata
 });
+
 
 // delete old caches on activate
 self.addEventListener("activate", (event) => {
