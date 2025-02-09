@@ -102,23 +102,36 @@ self.addEventListener("activate", (event) => {
 
 // On fetch, intercept server requests
 self.addEventListener("fetch", (event) => {
-  if (event.request.mode === "navigate") {
-    
-    event.respondWith(
-      caches.match("/html/index.html").then((cachedResponse) => {
-        return cachedResponse || fetch(event.request);
-      })
-    );
-    return;
-  }
-
+  console.log("Interceptando petición:", event.request.url);
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request).catch(() => {
-        return new Response("Offline: Recurso no disponible", { status: 404 });
-      });
+      if (cachedResponse) {
+        console.log("Sirviendo desde caché:", event.request.url);
+        return cachedResponse;
+      }
+
+      console.log("No está en caché, intentamos obtener de la red:", event.request.url);
+      return fetch(event.request)
+        .then((networkResponse) => {
+          // Guardamos en caché la nueva respuesta para futuras peticiones
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        })
+        .catch(() => {
+          console.error("⚠️ Sin conexión y recurso no cacheado:", event.request.url);
+          // Si la petición es de navegación (HTML), devolver la página principal cacheada
+          if (event.request.mode === "navigate") {
+            return caches.match("/html/index.html");
+          }
+
+          // Para otros archivos, devolver un mensaje de error en lugar de fallo total
+          return new Response("⚠️ Offline: El recurso no está en caché.", { status: 404 });
+        });
     })
   );
 });
+
 
