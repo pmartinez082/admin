@@ -58,12 +58,12 @@ if ('serviceWorker' in navigator) {
 
       // Use ES Module version of our Service Worker in development
       if (import.meta.env?.DEV) {
-        reg = await navigator.serviceWorker.register('/service-worker.js', {
+        reg = await navigator.serviceWorker.register('/sw.js', {
           type: 'module',
         });
       } else {
         // In production, use the normal service worker registration
-        reg = await navigator.serviceWorker.register('/service-worker.js');
+        reg = await navigator.serviceWorker.register('/sw.js');
       }
 
       console.log('Service worker registered! 😎', reg);
