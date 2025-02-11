@@ -1,50 +1,50 @@
 const VERSION = "4";
 const CACHE_NAME = `CACHE_${VERSION}`;
 const APP_STATIC_RESOURCES = [
-  "/icons/putxera.jpg",
-  "/icons/putxera.png",
-  "/css/style.css",
-  "/404.html",
-  "/html/admin.html",
-  "/html/berria.html",
-  "/html/faseakView.html",
-  "/html/index.html",
-  "/html/kalkuluak.html",
-  "/html/taldeaEzabatu.html",
-  "/html/taldeBerria.html",
-  "/html/txapelketaBerria.html",
-  "/html/txapelketaEzabatu.html",
-  "/html/txapelketakView.html",
-  "/pwa/manifest.json",
-  "/pwa/sw.js",
-  "/js/admin.js",
-  "/js/app.js",
-  "/js/ebaluazioa.js",
-  "/js/epaimahaikidea.js",
-  "/js/ezaugarria.js",
-  "/js/fasea.js",
-  "/js/konstanteak.js",
-  "/js/taldea.js",
-  "/js/txapelketa.js",
-  "/js/user.js",
-  "/pics/atzera.svg",
-  "/pics/berria.svg",
-  "/pics/birkargatu.svg",
-  "/pics/chef.svg",
-  "/pics/epaBerria.svg",
-  "/pics/epaEzabatu.svg",
-  "/pics/epaitu.svg",
-  "/pics/ezarpenak.svg",
-  "/pics/historia.svg",
-  "/pics/mahaia.svg",
-  "/pics/menu.svg",
-  "/pics/podium.svg",
-  "/pics/pot.svg",
-  "/pics/profila.svg",
-  "/pics/taldeaEzabatu.svg",
-  "/pics/taldeBerria.svg",
-  "/pics/txapBerria.svg",
-  "/pics/txapEzabatu.svg",
+  "../icons/putxera.jpg",
+  "../icons/putxera.png",
+  "../css/style.css",
+  "../404.html",
+  "../html/admin.html",
+  "../html/berria.html",
+  "../html/faseakView.html",
+  "../html/index.html",
+  "../html/kalkuluak.html",
+  "../html/taldeaEzabatu.html",
+  "../html/taldeBerria.html",
+  "../html/txapelketaBerria.html",
+  "../html/txapelketaEzabatu.html",
+  "../html/txapelketakView.html",
+  "../pwa/manifest.json",
+  "../pwa/sw.js",
+  "../js/admin.js",
+  "../js/app.js",
+  "../js/ebaluazioa.js",
+  "../js/epaimahaikidea.js",
+  "../js/ezaugarria.js",
+  "../js/fasea.js",
+  "../js/konstanteak.js",
+  "../js/taldea.js",
+  "../js/txapelketa.js",
+  "../js/user.js",
+  "../pics/atzera.svg",
+  "../pics/berria.svg",
+  "../pics/birkargatu.svg",
+  "../pics/chef.svg",
+  "../pics/epaBerria.svg",
+  "../pics/epaEzabatu.svg",
+  "../pics/epaitu.svg",
+  "../pics/ezarpenak.svg",
+  "../pics/historia.svg",
+  "../pics/mahaia.svg",
+  "../pics/menu.svg",
+  "../pics/podium.svg",
+  "../pics/pot.svg",
+  "../pics/profila.svg",
+  "../pics/taldeaEzabatu.svg",
+  "../pics/taldeBerria.svg",
+  "../pics/txapBerria.svg",
+  "../pics/txapEzabatu.svg",
 ];
 
 if ("serviceWorker" in navigator) {
@@ -114,9 +114,14 @@ self.addEventListener("fetch", (event) => {
         .catch(() => {
           console.error("⚠️ Sin conexión y recurso no cacheado:", event.request.url);
           if (event.request.mode === "navigate") {
-            return caches.match("/html/index.html");
+            return caches.match("../html/index.html");
           }
-          return new Response("⚠️ Offline: El recurso no está en caché.", { status: 404 });
+          return caches.match(event.request).then((fallbackResponse) => {
+            if (fallbackResponse) {
+              return fallbackResponse;
+            }
+            return new Response("⚠️ Offline: El recurso no está en caché.", { status: 404 });
+          });
         });
     })
   );
