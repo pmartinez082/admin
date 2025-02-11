@@ -47,37 +47,6 @@ const APP_STATIC_RESOURCES = [
   "../pics/txapEzabatu.svg",
 ];
 
-// Register the service worker
-if ('serviceWorker' in navigator) {
-  // Wait for the 'load' event to not block other work
-  window.addEventListener('load', async () => {
-    // Try to register the service worker.
-    try {
-      // Capture the registration for later use, if needed
-      let reg;
-
-      // Use ES Module version of our Service Worker in development
-      if (import.meta.env?.DEV) {
-        reg = await navigator.serviceWorker.register('/sw.js', {
-          type: 'module',
-        });
-      } else {
-        // In production, use the normal service worker registration
-        reg = await navigator.serviceWorker.register('/sw.js');
-      }
-
-      console.log('Service worker registered! 😎', reg);
-    } catch (err) {
-      console.log('😥 Service worker registration failed: ', err);
-    }
-  });
-}
-self.addEventListener('install', (event) => {
-  console.log('Service worker install event!');
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_STATIC_RESOURCES)));
-});
-
-/*
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -90,7 +59,7 @@ self.addEventListener("install", (event) => {
   );
   self.skipWaiting();
 });
-*/
+
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((names) => {
@@ -107,21 +76,6 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-
-self.addEventListener('fetch', (event) => {
-  
-  console.log('Fetch intercepted for:', event.request.url);
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request);
-    }),
-  );
-});
-
-/*
 self.addEventListener("fetch", (event) => {
   console.log("Interceptando petición:", event.request.url);
   if (!event.request.url.startsWith(self.location.origin)) {
@@ -158,6 +112,4 @@ self.addEventListener("fetch", (event) => {
         });
     })
   );
-  
 });
-*/

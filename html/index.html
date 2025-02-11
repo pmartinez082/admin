@@ -9,7 +9,6 @@
 </head>
 <body>
   <script type="module">
-    
     import { login, toggleLogin } from '../js/app.js';
     document.getElementById('authForm').addEventListener('submit', login);
     document.getElementById('toggle-button').addEventListener('click', toggleLogin);
@@ -26,12 +25,17 @@
     <button id="toggle-button">Ez duzu konturik? Erregistratu zaitez</button>
     <button id="installButton" hidden>Instalatu</button>
   </div>
-
-  
 </body>
 <script>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("../pwa/sw.js");
+    navigator.serviceWorker.register("../pwa/sw.js").then(
+      (registration) => {
+        console.log("Service worker registration successful:", registration);
+      },
+      (error) => {
+        console.log(`Service worker registration failed: ${error}`);
+      }
+    );
   }
 </script>
 
@@ -45,7 +49,6 @@
     e.preventDefault();
     document.getElementById('installButton').hidden = false;
     deferredPrompt = e;
-    
   });
 
   const installButton = document.getElementById('installButton');
