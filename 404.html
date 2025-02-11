@@ -6,15 +6,18 @@
     <title>index</title>
     <script>
         const path = window.location.pathname;
+        const query = window.location.search;
 
         const routes = {
             '/admin/': '/html/index.html',
-            };
+        };
 
         if (routes[path]) {
-            window.location.href = window.location.href.split("admin")[0]+"admin"+routes[path];
+            window.location.href = window.location.href.split("admin")[0] + "admin" + routes[path];
+        } else if (query.includes('?')) {
+            window.location.href = window.location.href.replace('?', '');
         } else {
-         //   document.body.innerHTML = '<h1>404 - Ez da aurkitu</h1>';
+            document.body.innerHTML = '<h1>404 - Ez da aurkitu</h1>';
         }
     </script>
 </head>
