@@ -1,6 +1,7 @@
 const VERSION = "4";
 const CACHE_NAME = `CACHE_${VERSION}`;
 const APP_STATIC_RESOURCES = [
+  "/admin/",
   "/admin/icons/putxera.jpg",
   "/admin/icons/putxera.png",
   "/admin/css/style.css",
