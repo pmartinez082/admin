@@ -20,7 +20,7 @@
     ],
     
     "id": "/admin",
-    "start_url": "/admin/html/index.html",
+    "start_url": "/admin/index.html",
     "theme_color": "#CCCCFF",
     "background_color": "#ffffff",
     "display": "standalone"

@@ -5,11 +5,10 @@ const APP_STATIC_RESOURCES = [
   "/admin/icons/putxera.jpg",
   "/admin/icons/putxera.png",
   "/admin/css/style.css",
-  "/admin/404.html",
   "/admin/html/admin.html",
   "/admin/html/berria.html",
   "/admin/html/faseakView.html",
-  "/admin/html/index.html",
+  "/admin/index.html",
   "/admin/html/kalkuluak.html",
   "/admin/html/taldeaEzabatu.html",
   "/admin/html/taldeBerria.html",
@@ -103,7 +102,7 @@ self.addEventListener("fetch", (event) => {
         .catch(() => {
           console.error("⚠️ Sin conexión y recurso no cacheado:", event.request.url);
           if (event.request.mode === "navigate") {
-            return caches.match("/html/index.html");
+            return caches.match("/index.html");
           }
           return caches.match(event.request).then((fallbackResponse) => {
             if (fallbackResponse) {
