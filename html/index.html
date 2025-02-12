@@ -28,7 +28,7 @@
 </body>
 <script>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("../pwa/sw.js", { scope: "../" }).then(
+    navigator.serviceWorker.register('/admin/sw.js', { scope: '/admin/' }).then(
       (registration) => {
         console.log("Service worker registration successful:", registration);
       },
