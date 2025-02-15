@@ -1,5 +1,5 @@
 const VERSION = "4";
-const CACHE_NAME = `CACHE_${VERSION}`;
+const CACHE_NAME = `admin-bertsio-${VERSION}`;
 const APP_STATIC_RESOURCES = [
   "/admin",
   "/admin/icons/putxera.jpg",
