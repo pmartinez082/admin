@@ -18,7 +18,7 @@ export const createNewFasea = async () => {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
         const response = await fetch(`${API_URL}/fasea/add`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -46,7 +46,7 @@ export const deleteFasea = async (event) => {
     try {
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(idFasea),
@@ -77,7 +77,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -182,7 +182,7 @@ export const egoeraAldatu = async (event) => {
     try {
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),

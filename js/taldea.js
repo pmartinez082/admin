@@ -4,7 +4,7 @@ export const getTaldeak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
         });
@@ -35,7 +35,7 @@ export const createNewTaldea = async (event) => {
     try {
         const response = await fetch(`${API_URL}/taldea/add`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -61,7 +61,7 @@ export const getTaldea = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/${id}`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -85,7 +85,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
     try {
         const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -114,7 +114,7 @@ export const deleteTaldea = async (event) => {
     try {
         const response = await fetch(`${API_URL}/taldea/delete/`, {
             method: 'DELETE',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({idTaldea:idTaldea}),
@@ -138,7 +138,7 @@ export const getTaldearenEbaluazioak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -160,7 +160,7 @@ export const getTaldeAktiboak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             

@@ -5,7 +5,7 @@ export const getEpaileak = async () => {
     try {
         const response = await fetch(`${API_URL}/user/role/epaileak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -31,7 +31,7 @@ export const verifyUser = async () => {
     try {
         const response = await fetch(`${API_URL}/user/verify`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username, password }),
@@ -54,7 +54,7 @@ export const findUser = async () => {
     try {
         const response = await fetch(`${API_URL}/user/find`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username }),
@@ -81,7 +81,7 @@ export const getRole = async (user) => {
     try {
         const response = await fetch(`${API_URL}/user/role`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username }),
@@ -106,7 +106,7 @@ export const createNewUser = async () => {
         if(!username||!email||!password||!role) return false;
         const response = await fetch(`${API_URL}/user/add`, {
             method: 'POST',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username, email, password, role }),

@@ -7,8 +7,9 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
     const idEpaimahaikidea = event.target.id.split('buttonEbaluazioak-')[1];   
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
+            targetAddressSpace: "private",
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
            
@@ -44,7 +45,7 @@ export const getFasearenEbaluazioak = async (event) => {
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
@@ -75,7 +76,7 @@ export const getFaseAktiboarenEbaluazioak = async () => {
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
-            headers: {
+             targetAddressSpace: "private", headers: {
                 'Content-Type': 'application/json',
             },
             
