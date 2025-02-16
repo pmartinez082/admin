@@ -12,8 +12,9 @@ export const getTxapelketak = async () => {
         const response = await fetch(`${API_URL}/txapelketa/`, {    
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -48,8 +49,9 @@ export const createNewTxapelketa = async (event) => {
         if(!data.lekua||!data.dataOrdua||!data.izena) return false;
         const response = await fetch(`${API_URL}/txapelketa/add`, {
          method: 'POST',
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -86,8 +88,9 @@ export const updateTxapelketa = async (event) => {
         const response = await fetch(`${API_URL}/txapelketa/update`, {
             method: 'PUT',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -116,8 +119,9 @@ export const getTxapelketa = async () => {
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}`, {
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -172,8 +176,9 @@ export const getTxapelketarenFaseak = async () => {
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}/faseak`, {
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -198,8 +203,9 @@ export const getInfoGuztia = async () => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia`, {
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -222,8 +228,9 @@ export const getTxapelketarenInfoGuztia = async () => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`, {
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -297,8 +304,9 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`, {
             method: 'GET',
              
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },

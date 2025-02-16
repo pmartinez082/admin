@@ -18,8 +18,9 @@ export const createNewFasea = async () => {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
         const response = await fetch(`${API_URL}/fasea/add`, {
          method: 'POST', 
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -49,8 +50,9 @@ export const deleteFasea = async (event) => {
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
               
-             headers: { 
-'targetAddressSpace': 'private',
+
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },

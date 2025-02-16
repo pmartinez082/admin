@@ -28,8 +28,9 @@ export const createNewEpaimahaikidea = async () => {
         try {
             const response = await fetch(`${API_URL}/epaimahaikidea/add`, {
              method: 'POST',     
-                 headers: { 
-'targetAddressSpace': 'private',
+    
+targetAddressSpace: 'private',
+headers: {
                        'Content-Type': 'application/json',
 
                 },
