@@ -20,8 +20,7 @@ export const createNewFasea = async () => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(data),
         });
@@ -50,8 +49,7 @@ export const deleteFasea = async (event) => {
             method: 'DELETE',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(idFasea),
         });
@@ -83,8 +81,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -190,8 +187,7 @@ export const egoeraAldatu = async (event) => {
             method: 'PUT',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(data),
         });

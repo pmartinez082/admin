@@ -6,8 +6,7 @@ export const getTaldeak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
         });
         if (response.ok) {
@@ -39,8 +38,7 @@ export const createNewTaldea = async (event) => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(data),
         });
@@ -67,8 +65,7 @@ export const getTaldea = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -93,8 +90,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -124,8 +120,7 @@ export const deleteTaldea = async (event) => {
             method: 'DELETE',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify({idTaldea:idTaldea}),
         });
@@ -150,8 +145,7 @@ export const getTaldearenEbaluazioak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -174,8 +168,7 @@ export const getTaldeAktiboak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });

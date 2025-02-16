@@ -13,8 +13,7 @@ export const getTxapelketak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -49,8 +48,7 @@ export const createNewTxapelketa = async (event) => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(data),
         });
@@ -86,8 +84,7 @@ export const updateTxapelketa = async (event) => {
             method: 'PUT',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify(data),
         });
@@ -115,8 +112,7 @@ export const getTxapelketa = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -142,8 +138,7 @@ const idTxapelketa = event.target.id.split('-')[1];
       method: 'DELETE',
        targetAddressSpace: "private", headers: {
                         'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
       },
       body: JSON.stringify({idTxapelketa:idTxapelketa}),
     });
@@ -169,8 +164,7 @@ export const getTxapelketarenFaseak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -194,8 +188,7 @@ export const getInfoGuztia = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -217,8 +210,7 @@ export const getTxapelketarenInfoGuztia = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -291,8 +283,7 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });

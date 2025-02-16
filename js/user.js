@@ -7,8 +7,7 @@ export const getEpaileak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -33,10 +32,10 @@ export const verifyUser = async () => {
     try {
         const response = await fetch(`${API_URL}/user/verify`, {
             method: 'POST',
-             targetAddressSpace: "private", headers: {
-                                'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+            targetAddressSpace: "private", 
+            headers: {
+                'Content-Type': 'application/json',
+
             },
             body: JSON.stringify({ username, password }),
         });
@@ -60,8 +59,7 @@ export const findUser = async () => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify({ username }),
         });
@@ -89,8 +87,7 @@ export const getRole = async (user) => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify({ username }),
         });
@@ -116,8 +113,7 @@ export const createNewUser = async () => {
             method: 'POST',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             body: JSON.stringify({ username, email, password, role }),
         });

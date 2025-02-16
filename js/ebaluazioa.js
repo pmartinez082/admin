@@ -12,8 +12,7 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
              targetAddressSpace: "private",
               headers: {
                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
                 
             },
            
@@ -51,8 +50,7 @@ export const getFasearenEbaluazioak = async (event) => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -84,8 +82,7 @@ export const getFaseAktiboarenEbaluazioak = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });

@@ -38,8 +38,7 @@ export const getEzaugarria = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
         });
 
@@ -65,8 +64,7 @@ export const getEzaugarria2 = async () => {
             method: 'GET',
              targetAddressSpace: "private", headers: {
                                 'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
             },
             
         });
@@ -105,8 +103,7 @@ export const createNewEzaugarria = async () => {
                 method: 'POST',
                  targetAddressSpace: "private", headers: {
                                     'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
                 },
                 body: JSON.stringify(data),
             });

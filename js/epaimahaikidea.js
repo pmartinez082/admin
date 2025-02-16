@@ -30,8 +30,7 @@ export const createNewEpaimahaikidea = async () => {
                 method: 'POST',
                  targetAddressSpace: "private", headers: {
                                     'Content-Type': 'application/json',
-                'Private-Network-Access-Name': 'Zerbitzaria',
-                'Private-Network-Access-ID': MAC,
+
                 },
                 body: JSON.stringify(data),
             });
