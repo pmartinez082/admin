@@ -1,4 +1,5 @@
 export const API_URL = 'http://192.168.137.1:3000';
+export const MAC = '9A:BD:80:BE:EF:01';
 //export const API_URL = 'http://localhost:3000';
 export class Ebaluazioa {
     constructor(idEbaluazioa, idEpaimahaikidea, idTaldea, idEzaugarria, puntuak, noiz) { 

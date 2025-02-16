@@ -1,11 +1,13 @@
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 export const getTaldeak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
         });
         if (response.ok) {
@@ -36,7 +38,9 @@ export const createNewTaldea = async (event) => {
         const response = await fetch(`${API_URL}/taldea/add`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(data),
         });
@@ -62,7 +66,9 @@ export const getTaldea = async () => {
         const response = await fetch(`${API_URL}/taldea/${id}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -86,7 +92,9 @@ export const getBaloratuGabekoTaldeak = async (event) => {
         const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -115,7 +123,9 @@ export const deleteTaldea = async (event) => {
         const response = await fetch(`${API_URL}/taldea/delete/`, {
             method: 'DELETE',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify({idTaldea:idTaldea}),
         });
@@ -139,7 +149,9 @@ export const getTaldearenEbaluazioak = async () => {
         const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -161,7 +173,9 @@ export const getTaldeAktiboak = async () => {
         const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });

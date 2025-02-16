@@ -1,5 +1,5 @@
 
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 export const getEpailearenEbaluazioakFaseka = async (event) => {
@@ -7,10 +7,14 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
     const idEpaimahaikidea = event.target.id.split('buttonEbaluazioak-')[1];   
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
-            targetAddressSpace: "private",
+           
             method: 'GET',
-             targetAddressSpace: "private", headers: {
+             targetAddressSpace: "private",
+              headers: {
                 'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
+                
             },
            
         });
@@ -46,7 +50,9 @@ export const getFasearenEbaluazioak = async (event) => {
         const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -77,7 +83,9 @@ export const getFaseAktiboarenEbaluazioak = async () => {
         const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });

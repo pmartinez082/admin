@@ -1,6 +1,6 @@
 import * as konstanteak from './konstanteak.js';
 import {createClassesFromDataF} from './fasea.js' ;
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 
 
 
@@ -12,7 +12,9 @@ export const getTxapelketak = async () => {
         const response = await fetch(`${API_URL}/txapelketa/`, {    
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -46,7 +48,9 @@ export const createNewTxapelketa = async (event) => {
         const response = await fetch(`${API_URL}/txapelketa/add`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(data),
         });
@@ -81,7 +85,9 @@ export const updateTxapelketa = async (event) => {
         const response = await fetch(`${API_URL}/txapelketa/update`, {
             method: 'PUT',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(data),
         });
@@ -108,7 +114,9 @@ export const getTxapelketa = async () => {
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -133,7 +141,9 @@ const idTxapelketa = event.target.id.split('-')[1];
     const response = await fetch(`${API_URL}/txapelketa/delete/`, {
       method: 'DELETE',
        targetAddressSpace: "private", headers: {
-        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
       },
       body: JSON.stringify({idTxapelketa:idTxapelketa}),
     });
@@ -158,7 +168,9 @@ export const getTxapelketarenFaseak = async () => {
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}/faseak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -181,7 +193,9 @@ export const getInfoGuztia = async () => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -202,7 +216,9 @@ export const getTxapelketarenInfoGuztia = async () => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -274,7 +290,9 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
         const response = await fetch(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });

@@ -1,4 +1,4 @@
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from './konstanteak.js';
 export function getEzaugarriakArray(){
     const idFasea = document.getElementById('idFasea').value;
@@ -37,7 +37,9 @@ export const getEzaugarria = async () => {
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
         });
 
@@ -62,7 +64,9 @@ export const getEzaugarria2 = async () => {
         const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -100,7 +104,9 @@ export const createNewEzaugarria = async () => {
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
                 method: 'POST',
                  targetAddressSpace: "private", headers: {
-                    'Content-Type': 'application/json',
+                                    'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
                 },
                 body: JSON.stringify(data),
             });

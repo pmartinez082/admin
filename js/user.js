@@ -1,12 +1,14 @@
 import * as konstanteak from './konstanteak.js';
 import 'https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js';  
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 export const getEpaileak = async () => {
     try {
         const response = await fetch(`${API_URL}/user/role/epaileak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -32,7 +34,9 @@ export const verifyUser = async () => {
         const response = await fetch(`${API_URL}/user/verify`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify({ username, password }),
         });
@@ -55,7 +59,9 @@ export const findUser = async () => {
         const response = await fetch(`${API_URL}/user/find`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify({ username }),
         });
@@ -82,7 +88,9 @@ export const getRole = async (user) => {
         const response = await fetch(`${API_URL}/user/role`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify({ username }),
         });
@@ -107,7 +115,9 @@ export const createNewUser = async () => {
         const response = await fetch(`${API_URL}/user/add`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify({ username, email, password, role }),
         });

@@ -1,4 +1,4 @@
-import {API_URL} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 
@@ -19,7 +19,9 @@ export const createNewFasea = async () => {
         const response = await fetch(`${API_URL}/fasea/add`, {
             method: 'POST',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(data),
         });
@@ -47,7 +49,9 @@ export const deleteFasea = async (event) => {
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(idFasea),
         });
@@ -78,7 +82,9 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             
         });
@@ -183,7 +189,9 @@ export const egoeraAldatu = async (event) => {
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
              targetAddressSpace: "private", headers: {
-                'Content-Type': 'application/json',
+                                'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
             },
             body: JSON.stringify(data),
         });

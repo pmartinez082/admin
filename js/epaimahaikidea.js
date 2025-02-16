@@ -29,7 +29,9 @@ export const createNewEpaimahaikidea = async () => {
             const response = await fetch(`${API_URL}/epaimahaikidea/add`, {
                 method: 'POST',
                  targetAddressSpace: "private", headers: {
-                    'Content-Type': 'application/json',
+                                    'Content-Type': 'application/json',
+                'Private-Network-Access-Name': 'Zerbitzaria',
+                'Private-Network-Access-ID': MAC,
                 },
                 body: JSON.stringify(data),
             });
