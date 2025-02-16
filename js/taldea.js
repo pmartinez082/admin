@@ -4,9 +4,10 @@ export const getTaldeak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-                                'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
         });
@@ -36,10 +37,10 @@ export const createNewTaldea = async (event) => {
     if(!data.telefonoa) data.telefonoa = "";
     try {
         const response = await fetch(`${API_URL}/taldea/add`, {
-            method: 'POST',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+         method: 'POST',
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify(data),
@@ -65,9 +66,10 @@ export const getTaldea = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/${id}`, {
             method: 'GET',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+             
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             
@@ -91,9 +93,10 @@ export const getBaloratuGabekoTaldeak = async (event) => {
     try {
         const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+             
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             
@@ -122,9 +125,10 @@ export const deleteTaldea = async (event) => {
     try {
         const response = await fetch(`${API_URL}/taldea/delete/`, {
             method: 'DELETE',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+             
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify({idTaldea:idTaldea}),
@@ -148,9 +152,10 @@ export const getTaldearenEbaluazioak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+             
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             
@@ -172,9 +177,10 @@ export const getTaldeAktiboak = async () => {
     try {
         const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
             method: 'GET',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+             
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             

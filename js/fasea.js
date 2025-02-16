@@ -17,10 +17,10 @@ export const createNewFasea = async () => {
     try {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
         const response = await fetch(`${API_URL}/fasea/add`, {
-            method: 'POST',
-             targetAddressSpace: "private", 
-             headers: {
-                                'Content-Type': 'application/json',
+         method: 'POST', 
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify(data),
@@ -48,9 +48,10 @@ export const deleteFasea = async (event) => {
     try {
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
-             targetAddressSpace: "private", 
-             headers: {
-                                'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify(idFasea),
@@ -81,9 +82,10 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
-            targetAddressSpace: "private", 
-            headers: {
-                                'Content-Type': 'application/json',
+             
+            headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             
@@ -188,9 +190,10 @@ export const egoeraAldatu = async (event) => {
     try {
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
-            targetAddressSpace: "private",
-            headers: {
-                               'Content-Type': 'application/json',
+            
+            headers: { 
+'targetAddressSpace': 'private',
+                  'Content-Type': 'application/json',
 
             },
             body: JSON.stringify(data),

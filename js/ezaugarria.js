@@ -36,9 +36,10 @@ export const getEzaugarria = async () => {
         }
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-               'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+  'Content-Type': 'application/json',
 
             },
         });
@@ -63,9 +64,10 @@ export const getEzaugarria2 = async () => {
     try {
         const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-                    'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+       'Content-Type': 'application/json',
 
             },
             
@@ -102,10 +104,10 @@ export const createNewEzaugarria = async () => {
         };
         try {
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
-                method: 'POST',
-                 targetAddressSpace: "private", 
-                 headers: {
-                                    'Content-Type': 'application/json',
+             method: 'POST',     
+                 headers: { 
+'targetAddressSpace': 'private',
+                       'Content-Type': 'application/json',
 
                 },
                 body: JSON.stringify(data),

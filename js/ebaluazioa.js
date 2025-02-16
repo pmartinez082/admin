@@ -9,9 +9,10 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
         const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
            
             method: 'GET',
-             targetAddressSpace: "private",
-              headers: {
-                'Content-Type': 'application/json',
+             
+              headers: { 
+'targetAddressSpace': 'private',
+   'Content-Type': 'application/json',
 
                 
             },
@@ -48,9 +49,10 @@ export const getFasearenEbaluazioak = async (event) => {
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-                                'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             
@@ -81,9 +83,10 @@ export const getFaseAktiboarenEbaluazioak = async () => {
     try {
         const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-                                'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             

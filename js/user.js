@@ -5,9 +5,10 @@ export const getEpaileak = async () => {
     try {
         const response = await fetch(`${API_URL}/user/role/epaileak`, {
             method: 'GET',
-             targetAddressSpace: "private", 
-             headers: {
-                'Content-Type': 'application/json',
+              
+             headers: { 
+'targetAddressSpace': 'private',
+   'Content-Type': 'application/json',
 
             },
             
@@ -32,10 +33,10 @@ export const verifyUser = async () => {
     const password = document.getElementById('password').value;
     try {
         const response = await fetch(`${API_URL}/user/verify`, {
-            method: 'POST',
-            targetAddressSpace: "private", 
-            headers: {
-                'Content-Type': 'application/json',
+         method: 'POST',
+            headers: { 
+'targetAddressSpace': 'private',
+   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify({ username, password }),
@@ -57,10 +58,10 @@ export const findUser = async () => {
     const username = document.getElementById('username').value;
     try {
         const response = await fetch(`${API_URL}/user/find`, {
-            method: 'POST',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+         method: 'POST',
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify({ username }),
@@ -86,10 +87,10 @@ export const getRole = async (user) => {
     }
     try {
         const response = await fetch(`${API_URL}/user/role`, {
-            method: 'POST',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+         method: 'POST',
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify({ username }),
@@ -113,10 +114,10 @@ export const createNewUser = async () => {
     try {
         if(!username||!email||!password||!role) return false;
         const response = await fetch(`${API_URL}/user/add`, {
-            method: 'POST',
-             targetAddressSpace: "private",
-             headers: {
-                                'Content-Type': 'application/json',
+         method: 'POST',
+             headers: { 
+'targetAddressSpace': 'private',
+                   'Content-Type': 'application/json',
 
             },
             body: JSON.stringify({ username, email, password, role }),
