@@ -85,8 +85,9 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
              
-            headers: { 
-'targetAddressSpace': 'private',
+           
+targetAddressSpace: 'private',
+headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -193,8 +194,9 @@ export const egoeraAldatu = async (event) => {
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
             
-            headers: { 
-'targetAddressSpace': 'private',
+           
+targetAddressSpace: 'private',
+headers: {
                   'Content-Type': 'application/json',
 
             },

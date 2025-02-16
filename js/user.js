@@ -35,8 +35,9 @@ export const verifyUser = async () => {
     try {
         const response = await fetch(`${API_URL}/user/verify`, {
          method: 'POST',
-            headers: { 
-'targetAddressSpace': 'private',
+           
+targetAddressSpace: 'private',
+headers: {
    'Content-Type': 'application/json',
 
             },

@@ -148,8 +148,9 @@ const idTxapelketa = event.target.id.split('-')[1];
     const response = await fetch(`${API_URL}/txapelketa/delete/`, {
       method: 'DELETE',
         
-    headers: { 
-'targetAddressSpace': 'private',
+   
+targetAddressSpace: 'private',
+headers: {
            'Content-Type': 'application/json',
 
       },
