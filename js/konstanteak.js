@@ -77,3 +77,22 @@ export class Taldea {
        
     }
 }
+
+
+export const sendOptionsRequest = async (url) => {
+    try {
+        const response = await fetch(url, {
+            method: 'OPTIONS',
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.ok;
+    } catch (err) {
+        console.error('Error sending OPTIONS request:', err);
+        return false;
+    }
+};

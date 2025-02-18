@@ -1,16 +1,18 @@
 import * as konstanteak from './konstanteak.js';
 import 'https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js';  
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, sendOptionsRequest} from './konstanteak.js'
+
 export const getEpaileak = async () => {
     try {
+        await(sendOptionsRequest(`${API_URL}/user/role/epaileak`));
         const response = await fetch(`${API_URL}/user/role/epaileak`, {
             method: 'GET',
               
 
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-   'Content-Type': 'application/json',
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',headers: {
+            'Content-Type': 'application/json',
 
             },
             
@@ -34,6 +36,7 @@ export const verifyUser = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     try {
+        await(sendOptionsRequest(`${API_URL}/user/verify`));
         const response = await fetch(`${API_URL}/user/verify`, {
          method: 'POST',
            
@@ -61,6 +64,7 @@ mode: 'cors',headers: {
 export const findUser = async () => {
     const username = document.getElementById('username').value;
     try {
+        await(sendOptionsRequest(`${API_URL}/user/find`));
         const response = await fetch(`${API_URL}/user/find`, {
          method: 'POST',
 
@@ -83,15 +87,12 @@ mode: 'cors',headers: {
 
 };
 
-export const getRole = async (user) => {
-    let username;
-    if (!user) {
+export const getRole = async () => {
+    
     username = document.getElementById('username').value;
-    }
-    else{
-    username = user;
-    }
+
     try {
+        await(sendOptionsRequest(`${API_URL}/user/role`));
         const response = await fetch(`${API_URL}/user/role`, {
          method: 'POST',
 
@@ -120,7 +121,9 @@ export const createNewUser = async () => {
     const password = document.getElementById('password').value;
     const role = "admin";
     try {
+        
         if(!username||!email||!password||!role) return false;
+        await(sendOptionsRequest(`${API_URL}/user/add`));
         const response = await fetch(`${API_URL}/user/add`, {
          method: 'POST',
 
