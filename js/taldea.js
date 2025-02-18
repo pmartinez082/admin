@@ -3,7 +3,7 @@ import * as konstanteak from "./konstanteak.js";
 
 export const getTaldeak = async () => {
     try {
-        const response = await fetch(`${API_URL}/taldea/`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -37,7 +37,7 @@ export const createNewTaldea = async (event) => {
     if(!data.izena) return false;
     if(!data.telefonoa) data.telefonoa = "";
     try {
-        const response = await fetch(`${API_URL}/taldea/add`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/add`, {
             method: 'POST',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -66,7 +66,7 @@ export const createNewTaldea = async (event) => {
 export const getTaldea = async () => {
     const id = document.getElementById('faseakTaula').getAttribute('data').split('-')[0];
     try {
-        const response = await fetch(`${API_URL}/taldea/${id}`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/${id}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -87,7 +87,7 @@ export const getTaldea = async () => {
 export const getBaloratuGabekoTaldeak = async (event) => {
     const idEpaimahaikidea = event.target.id.split('buttonTaldeak-')[1];
     try {
-        const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -115,7 +115,7 @@ export const deleteTaldea = async (event) => {
     const idTaldea = event.target.id.split('-')[1];
     event.preventDefault();
     try {
-        const response = await fetch(`${API_URL}/taldea/delete/`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/delete/`, {
             method: 'DELETE',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -140,7 +140,7 @@ export const deleteTaldea = async (event) => {
 export const getTaldearenEbaluazioak = async () => {
     const id = document.getElementById('idTaldea').value;
     try {
-        const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -164,7 +164,7 @@ export const getTaldearenEbaluazioak = async () => {
 
 export const getTaldeAktiboak = async () => {
     try {
-        const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/taldea/get/aktiboak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',

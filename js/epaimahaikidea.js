@@ -26,7 +26,7 @@ export const createNewEpaimahaikidea = async () => {
             idFasea: document.getElementById('idFasea').value
         };
         try {
-            const response = await fetch(`${API_URL}/epaimahaikidea/add`, {
+            const response = await fetch(`${API_URL}/${Date.now()}/epaimahaikidea/add`, {
              method: 'POST',     
     
 cache: 'no-cache',

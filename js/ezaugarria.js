@@ -33,7 +33,7 @@ export const getEzaugarria = async () => {
             //console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
-        const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -62,7 +62,7 @@ export const getEzaugarria2 = async () => {
     const id = document.getElementById('faseakTaula');
     const idEzaugarria = id.getAttribute('data').split('-')[1];
     try {
-        const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -98,7 +98,7 @@ export const createNewEzaugarria = async () => {
             ponderazioa: getEzaugarriakArray()[i].ponderazioa 
         };
         try {
-            const response = await fetch(`${API_URL}/ezaugarria/add`, {
+            const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/add`, {
                 method: 'POST',
                 cache: 'no-cache',
                 targetAddressSpace: 'private',

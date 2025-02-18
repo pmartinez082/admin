@@ -15,7 +15,7 @@ export const createNewFasea = async () => {
 
     try {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
-        const response = await fetch(`${API_URL}/fasea/add`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/fasea/add`, {
             method: 'POST', 
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -46,7 +46,7 @@ export const deleteFasea = async (event) => {
     event.preventDefault();
 
     try {
-        const response = await fetch(`${API_URL}/fasea/delete/`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/fasea/delete/`, {
             method: 'DELETE',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -71,7 +71,7 @@ export const deleteFasea = async (event) => {
 
 export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
-        const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -172,7 +172,7 @@ export const egoeraAldatu = async (event) => {
         data: new Date().toISOString().split('T')[0],
     };
     try {
-        const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
+        const response = await fetch(`${API_URL}/${Date.now()}/fasea/egoeraAldatu`, {
             method: 'PUT',
             cache: 'no-cache',
             targetAddressSpace: 'private',
