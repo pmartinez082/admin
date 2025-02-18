@@ -1,4 +1,4 @@
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from './konstanteak.js';
 
 export function getEzaugarriakArray(){
@@ -33,7 +33,8 @@ export const getEzaugarria = async () => {
             //console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
-        const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/get/${idEzaugarri}`, {
+        await(sendOptionsRequest(`${API_URL}/ezaugarria/get/${idEzaugarri}`, 'GET'));
+        const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -62,7 +63,8 @@ export const getEzaugarria2 = async () => {
     const id = document.getElementById('faseakTaula');
     const idEzaugarria = id.getAttribute('data').split('-')[1];
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/${idEzaugarria}`, {
+        await(sendOptionsRequest(`${API_URL}/ezaugarria/${idEzaugarria}`, 'GET'));
+        const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -98,7 +100,8 @@ export const createNewEzaugarria = async () => {
             ponderazioa: getEzaugarriakArray()[i].ponderazioa 
         };
         try {
-            const response = await fetch(`${API_URL}/${Date.now()}/ezaugarria/add`, {
+            await(sendOptionsRequest(`${API_URL}/ezaugarria/add`, 'POST'));
+            const response = await fetch(`${API_URL}/ezaugarria/add`, {
                 method: 'POST',
                 cache: 'no-cache',
                 targetAddressSpace: 'private',

@@ -1,11 +1,12 @@
-import {API_URL} from './konstanteak.js'
+import {API_URL, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 export const getEpailearenEbaluazioakFaseka = async (event) => {
     event.preventDefault();
     const idEpaimahaikidea = event.target.id.split('buttonEbaluazioak-')[1];   
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, 'GET'));
+        const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -43,7 +44,8 @@ export const getFasearenEbaluazioak = async (event) => {
     event.preventDefault();
     const idFasea = event.target.id.split('-')[1];
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, 'GET'));
+        const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -76,7 +78,8 @@ export const getFasearenEbaluazioak = async (event) => {
 
 export const getFaseAktiboarenEbaluazioak = async () => {
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, 'GET'));
+        const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',

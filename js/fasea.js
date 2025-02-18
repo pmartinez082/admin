@@ -1,4 +1,4 @@
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 //FASEA SORTU
@@ -15,7 +15,8 @@ export const createNewFasea = async () => {
 
     try {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
-        const response = await fetch(`${API_URL}/${Date.now()}/fasea/add`, {
+        await(sendOptionsRequest(`${API_URL}/fasea/add`, 'POST'));
+        const response = await fetch(`${API_URL}/fasea/add`, {
             method: 'POST', 
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -46,7 +47,8 @@ export const deleteFasea = async (event) => {
     event.preventDefault();
 
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/fasea/delete/`, {
+        await(sendOptionsRequest(`${API_URL}/fasea/delete/`, 'DELETE'));
+        const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -71,7 +73,8 @@ export const deleteFasea = async (event) => {
 
 export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
+        await(sendOptionsRequest(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, 'GET'));
+        const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
             cache: 'no-cache',
             targetAddressSpace: 'private',
@@ -172,7 +175,8 @@ export const egoeraAldatu = async (event) => {
         data: new Date().toISOString().split('T')[0],
     };
     try {
-        const response = await fetch(`${API_URL}/${Date.now()}/fasea/egoeraAldatu`, {
+        await(sendOptionsRequest(`${API_URL}/fasea/egoeraAldatu`, 'PUT'));
+        const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
             cache: 'no-cache',
             targetAddressSpace: 'private',

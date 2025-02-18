@@ -79,16 +79,17 @@ export class Taldea {
 }
 
 
-export const sendOptionsRequest = async (url) => {
+export const sendOptionsRequest = async (url,metodoa) => {
     try {
         const response = await fetch(url, {
             method: 'OPTIONS',
             cache: 'no-cache',
-            targetAddressSpace: 'private',
             mode: 'cors',
-            AccessControlMaxAge: '0',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Request-Method': metodoa, 
+                'Access-Control-Request-Headers': 'Content-Type',  
+                'Access-Control-Request-Private-Network': 'true',  
             },
         });
         return response.ok;
