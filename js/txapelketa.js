@@ -1,11 +1,10 @@
 import * as konstanteak from './konstanteak.js';
 import {createClassesFromDataF} from './fasea.js' ;
-import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 
 //TXAPELKETAK LORTU
 export const getTxapelketak = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/`));
         const response = await fetch(`${API_URL}/txapelketa/`, {
             method: 'GET',
             cache: 'no-cache',
@@ -41,7 +40,6 @@ export const createNewTxapelketa = async (event) => {
 
     try {
         if(!data.lekua||!data.dataOrdua||!data.izena) return false;
-        await(sendOptionsRequest(`${API_URL}/txapelketa/add`));
         const response = await fetch(`${API_URL}/txapelketa/add`, {
             method: 'POST',
             cache: 'no-cache',
@@ -77,7 +75,6 @@ export const updateTxapelketa = async (event) => {
         izena: document.getElementById('txapelketaIzena').value,
     };
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/update`));
         const response = await fetch(`${API_URL}/txapelketa/update`, {
             method: 'PUT',
             cache: 'no-cache',
@@ -104,7 +101,6 @@ export const updateTxapelketa = async (event) => {
 export const getTxapelketa = async () => {             
     const idTxapelketa = document.getElementById('idTxapelketa').value;
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/${idTxapelketa}`));
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}`, {
             method: 'GET',
             cache: 'no-cache',
@@ -128,7 +124,6 @@ export const deleteTxapelketa = async (event) => {
     event.preventDefault();
     const idTxapelketa = event.target.id.split('-')[1];
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/delete/`));
         const response = await fetch(`${API_URL}/txapelketa/delete/`, {
             method: 'DELETE',
             cache: 'no-cache',
@@ -156,7 +151,6 @@ export const deleteTxapelketa = async (event) => {
 export const getTxapelketarenFaseak = async () => {
     const idTxapelketa = document.getElementById('idTxapelketa').value;
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/${idTxapelketa}/faseak`));
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}/faseak`, {
             method: 'GET',
             cache: 'no-cache',
@@ -181,7 +175,6 @@ export const getTxapelketarenFaseak = async () => {
 
 export const getInfoGuztia = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/info-guztia`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia`, {
             method: 'GET',
             cache: 'no-cache',
@@ -203,7 +196,6 @@ export const getInfoGuztia = async () => {
 export const getTxapelketarenInfoGuztia = async () => {
     try {
         const idTxapelketa = document.getElementById('idTxapelketa').value;
-        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`, {
             method: 'GET',
             cache: 'no-cache',
@@ -273,7 +265,6 @@ function createClassesFromData(data) {
 
 export const getTxapelketaAktiboarenInfo = async (req, res) => {
     try {
-        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`, {
             method: 'GET',
             cache: 'no-cache',

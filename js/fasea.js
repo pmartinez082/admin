@@ -1,6 +1,5 @@
-import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
-
 
 //FASEA SORTU
 export const createNewFasea = async () => {
@@ -16,15 +15,13 @@ export const createNewFasea = async () => {
 
     try {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
-        await(sendOptionsRequest(`${API_URL}/fasea/add`));
         const response = await fetch(`${API_URL}/fasea/add`, {
-         method: 'POST', 
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            method: 'POST', 
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });
@@ -49,16 +46,13 @@ export const deleteFasea = async (event) => {
     event.preventDefault();
 
     try {
-        await(sendOptionsRequest(`${API_URL}/fasea/delete/`));
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(idFasea),
         });
@@ -77,24 +71,19 @@ mode: 'cors',headers: {
 
 export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`));
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
-             
-           
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
             return createClassesFromDataF(data);
-
-                    }
+        }
     } catch (err) {
         //console.log(err);
     }
@@ -126,7 +115,6 @@ export function createClassesFromDataF(data) {
             });
         }
 
-        
         if (item.idEpaimahaikidea && !map[item.idFasea].epaimahaikideak.find(ep => ep.idEpaimahaikidea === item.idEpaimahaikidea)) {
             map[item.idFasea].epaimahaikideak.push({
                 idEpaimahaikidea: item.idEpaimahaikidea,
@@ -136,8 +124,7 @@ export function createClassesFromDataF(data) {
 
         return map;
     }, {});
-   
-    
+
     for (const key in faseMap) {
         const faseData = faseMap[key];
         const fase = new konstanteak.Fasea(
@@ -158,7 +145,6 @@ export function createClassesFromDataF(data) {
                 ezData.puntuakMin,
                 null,
                 ezData.ponderazioa
-               
             );
             //console.log(ezData.ponderazioa+ "ponderazioa");
             fase.ezaugarriak.push(ezaugarria);
@@ -179,25 +165,20 @@ export function createClassesFromDataF(data) {
     return faseak;
 }
 
-
 export const egoeraAldatu = async (event) => {
-  
     const data = {
         idFasea: event.target.id.split('buttonEgoera-')[1],
         egoera: event.target.textContent === 'Hasi' ? "1" : "2",
         data: new Date().toISOString().split('T')[0],
     };
     try {
-        await(sendOptionsRequest(`${API_URL}/fasea/egoeraAldatu`));
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
-            
-           
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                  'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });

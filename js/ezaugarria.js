@@ -1,5 +1,6 @@
-import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from './konstanteak.js';
+
 export function getEzaugarriakArray(){
     const idFasea = document.getElementById('idFasea').value;
     const ezaugarriak = [];
@@ -25,25 +26,20 @@ export function getEzaugarriakArray(){
 
 
 export const getEzaugarria = async () => {
-  
     try {
-      
-        const idEzaugarri  =   document.getElementsByName("ezaugarria")[0].getAttribute('data-idEzaugarria');
+        const idEzaugarri  =   document.getElementsByName("ezaugarria")[0].getAttribute('data-idEzaugarri');
         
         if (!idEzaugarri) {
             //console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
-        await(sendOptionsRequest(`${API_URL}/ezaugarria/get/${idEzaugarri}`));
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-  'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
         });
 
@@ -61,32 +57,25 @@ mode: 'cors',headers: {
         return null;
     }
 };
+
 export const getEzaugarria2 = async () => {
     const id = document.getElementById('faseakTaula');
     const idEzaugarria = id.getAttribute('data').split('-')[1];
     try {
-        await(sendOptionsRequest(`${API_URL}/ezaugarria/${idEzaugarria}`));
         const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-       'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
             //console.log(data);
-           return new konstanteak.Ezaugarria(data[0].idEzaugarria, data[0].izena, data[0].puntuakMax, data[0].puntuakMin, data[0].ponderazioa);
-
-
+            return new konstanteak.Ezaugarria(data[0].idEzaugarria, data[0].izena, data[0].puntuakMax, data[0].puntuakMin, data[0].ponderazioa);
         }
-      
-    
     } catch (err) {
         //console.log(err);
     }
@@ -109,23 +98,19 @@ export const createNewEzaugarria = async () => {
             ponderazioa: getEzaugarriakArray()[i].ponderazioa 
         };
         try {
-            await(sendOptionsRequest(`${API_URL}/ezaugarria/add`));
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
-             method: 'POST',     
-  
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                       'Content-Type': 'application/json',
-
+                method: 'POST',
+                cache: 'no-cache',
+                targetAddressSpace: 'private',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
             });
             if (response.ok) {
-                
                 const responseData = await response.json();
                 //const idEzaugarria= responseData.idEzaugarria;
-            
                 //console.log("ezaugarria ondo sortu da");
             } else {
                 const error = await response.json();
@@ -137,5 +122,5 @@ mode: 'cors',headers: {
         }
         i = i + 1;
     }
-return true;
+    return true;
 };

@@ -1,11 +1,10 @@
-import {API_URL, sendOptionsRequest} from './konstanteak.js'
+import {API_URL} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 export const getEpailearenEbaluazioakFaseka = async (event) => {
     event.preventDefault();
     const idEpaimahaikidea = event.target.id.split('buttonEbaluazioak-')[1];   
     try {
-        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
             method: 'GET',
             cache: 'no-cache',
@@ -44,7 +43,6 @@ export const getFasearenEbaluazioak = async (event) => {
     event.preventDefault();
     const idFasea = event.target.id.split('-')[1];
     try {
-        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
             cache: 'no-cache',
@@ -78,7 +76,6 @@ export const getFasearenEbaluazioak = async (event) => {
 
 export const getFaseAktiboarenEbaluazioak = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
             cache: 'no-cache',
