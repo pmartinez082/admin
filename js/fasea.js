@@ -20,7 +20,7 @@ export const createNewFasea = async () => {
          method: 'POST', 
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -52,7 +52,7 @@ export const deleteFasea = async (event) => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -87,7 +87,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
              
            
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -196,7 +196,7 @@ export const egoeraAldatu = async (event) => {
             
            
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                   'Content-Type': 'application/json',
 
             },

@@ -7,7 +7,7 @@ export const getTaldeak = async () => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -41,7 +41,7 @@ export const createNewTaldea = async (event) => {
          method: 'POST',
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -71,7 +71,7 @@ export const getTaldea = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -99,7 +99,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -132,7 +132,7 @@ export const deleteTaldea = async (event) => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -160,7 +160,7 @@ export const getTaldearenEbaluazioak = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -186,7 +186,7 @@ export const getTaldeAktiboak = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },

@@ -39,7 +39,7 @@ export const getEzaugarria = async () => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
   'Content-Type': 'application/json',
 
             },
@@ -68,7 +68,7 @@ export const getEzaugarria2 = async () => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
        'Content-Type': 'application/json',
 
             },
@@ -109,7 +109,7 @@ export const createNewEzaugarria = async () => {
              method: 'POST',     
     
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                        'Content-Type': 'application/json',
 
                 },

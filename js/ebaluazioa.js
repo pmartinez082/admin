@@ -10,9 +10,9 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
            
             method: 'GET',
              
- 
+
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
    'Content-Type': 'application/json',
 
                 
@@ -53,7 +53,7 @@ export const getFasearenEbaluazioak = async (event) => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -88,7 +88,7 @@ export const getFaseAktiboarenEbaluazioak = async () => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },

@@ -14,7 +14,7 @@ export const getTxapelketak = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -51,7 +51,7 @@ export const createNewTxapelketa = async (event) => {
          method: 'POST',
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -90,7 +90,7 @@ export const updateTxapelketa = async (event) => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -121,7 +121,7 @@ export const getTxapelketa = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -150,7 +150,7 @@ const idTxapelketa = event.target.id.split('-')[1];
         
    
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
            'Content-Type': 'application/json',
 
       },
@@ -179,7 +179,7 @@ export const getTxapelketarenFaseak = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -206,7 +206,7 @@ export const getInfoGuztia = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -231,7 +231,7 @@ export const getTxapelketarenInfoGuztia = async () => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -307,7 +307,7 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
              
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },

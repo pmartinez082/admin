@@ -30,7 +30,7 @@ export const createNewEpaimahaikidea = async () => {
              method: 'POST',     
     
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                        'Content-Type': 'application/json',
 
                 },

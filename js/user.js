@@ -8,7 +8,7 @@ export const getEpaileak = async () => {
               
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
    'Content-Type': 'application/json',
 
             },
@@ -37,7 +37,7 @@ export const verifyUser = async () => {
          method: 'POST',
            
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
    'Content-Type': 'application/json',
 
             },
@@ -63,7 +63,7 @@ export const findUser = async () => {
          method: 'POST',
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -93,7 +93,7 @@ export const getRole = async (user) => {
          method: 'POST',
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
@@ -121,7 +121,7 @@ export const createNewUser = async () => {
          method: 'POST',
 
 targetAddressSpace: 'private',
-headers: {
+mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
             },
