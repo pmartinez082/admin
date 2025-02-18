@@ -87,10 +87,13 @@ mode: 'cors',headers: {
 
 };
 
-export const getRole = async () => {
-    
+export const getRole = async (user) => {
+    if(!user){
    const username = document.getElementById('username').value;
-
+    }
+    else{
+        username = user;
+    }
     try {
         await(sendOptionsRequest(`${API_URL}/user/role`));
         const response = await fetch(`${API_URL}/user/role`, {
