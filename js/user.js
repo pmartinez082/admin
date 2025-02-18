@@ -89,7 +89,7 @@ mode: 'cors',headers: {
 
 export const getRole = async () => {
     
-    username = document.getElementById('username').value;
+   const username = document.getElementById('username').value;
 
     try {
         await(sendOptionsRequest(`${API_URL}/user/role`));
