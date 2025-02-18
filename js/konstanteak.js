@@ -86,6 +86,7 @@ export const sendOptionsRequest = async (url) => {
             cache: 'no-cache',
             targetAddressSpace: 'private',
             mode: 'cors',
+            AccessControlMaxAge: '0',
             headers: {
                 'Content-Type': 'application/json',
             },
