@@ -1,19 +1,31 @@
-
 import dbConnection from '../database/database.js';
+
+const addPrivateeNetworkHeaders = (res) => {
+          res.setHeader('Access-Control-Allow-Origin', 'https://pmartinez082.github.io'); // Allow only frontend
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.setHeader('Access-Control-Allow-Private-Network', 'true'); // Required for private network access
+        res.setHeader('Private-Network-Access-Name', 'zerbitzaria');
+        res.setHeader('Private-Network-Access-ID', '9A:BD:80:BE:EF:01');
+        res.setHeader('Access-Control-Allow-Private-Network', 'true');
+};
+
 export const getTxapelketak = async (req, res) => {
   try {
-    
     const [results] = await dbConnection.query("SELECT * FROM txapelketa");
+    //addPrivateeNetworkHeaders(res);
     res.status(200).json(results);  
   } catch (error) {
-    //console.log(error); 
-    res.status(500).json({ error: 'errorea txapelketak eskuratzean' });    }
+    //addPrivateeNetworkHeaders(res);
+    res.status(500).json({ error: 'errorea txapelketak eskuratzean' });
+  }
 };
 
 export const getTxapelketa = async (req, res) => {
   const id = parseInt(req.params.idTxapelketa);
   
   if (isNaN(id)) {
+    //addPrivateeNetworkHeaders(res);
     return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
   }
   
@@ -21,9 +33,10 @@ export const getTxapelketa = async (req, res) => {
   
   try {
     const [results] = await dbConnection.query(sqlQuery, id);
+    //addPrivateeNetworkHeaders(res);
     res.status(200).json(results);
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'errorea txapelketa eskuratzean' });
   }
 };
@@ -32,23 +45,22 @@ export const getTxapelketarenFaseak = async (req, res) => {
   const id = parseInt(req.params.idTxapelketa);
   
   if (isNaN(id)) {
+    //addPrivateeNetworkHeaders(res);
     return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
   }
 
   const sqlQuery = `SELECT * FROM fasea WHERE idTxapelketa = ?`;
 
   try {
-
     const [results] = await dbConnection.query(sqlQuery, [id]);
-    
+    //addPrivateeNetworkHeaders(res);
     if (results.length === 0) {
       res.status(404).json({ error: 'Txapelketa not found' });
+    } else {
+      res.status(200).json(results);
     }
-
-    else{
-      res.status(200).json(results);}
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error retrieving data' });
   }
 };
@@ -56,8 +68,8 @@ export const getTxapelketarenFaseak = async (req, res) => {
 export const createNewTxapelketa = async (req, res) => {
   const txapelketa = req.body;
 
-  
   if (!txapelketa.izena || !txapelketa.dataOrdua || !txapelketa.lekua) {
+    //addPrivateeNetworkHeaders(res);
     return res.status(400).json({
       ErrorCode: 204,
       Message: 'Fields cannot be empty',
@@ -69,57 +81,61 @@ export const createNewTxapelketa = async (req, res) => {
     txapelketa.dataOrdua,
     txapelketa.lekua,
     txapelketa.egoera
-    
   ];
 
   const sqlQuery = 'INSERT INTO txapelketa (izena, dataOrdua, lekua, egoera) VALUES (?, ?, ?, ?)';
 
   try {
-    
     const [result] = await dbConnection.execute(sqlQuery, txapelketaObj);
-
-
     const idTxapelketa = result.insertId;
-
+    //addPrivateeNetworkHeaders(res);
     res.status(201).json({ idTxapelketa });
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error creating txapelketa' });
   }
 };
 
-
-
-  
 export const updateTxapelketa = async (req, res) => {
-    const txapelketa = req.body;
-    const idTxapelketa = parseInt(req.body.idTxapelketa);
-    if(isNaN(idTxapelketa)){
-      return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
-    }
-    try {
-      const txapelketaObj = [
-        txapelketa.izena,
-        txapelketa.dataOrdua,
-        txapelketa.lekua,
-        idTxapelketa
-      ];
-      const sqlQuery = 'UPDATE txapelketa SET izena = ?, dataOrdua = ?, lekua = ? WHERE idTxapelketa = ?';
-      await dbConnection.execute(sqlQuery, txapelketaObj);
-      res.status(200).json({ message: 'txapelketa updated' });
-    }
+  const txapelketa = req.body;
+  const idTxapelketa = parseInt(req.body.idTxapelketa);
+  if (isNaN(idTxapelketa)) {
+    //addPrivateeNetworkHeaders(res);
+    return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
+  }
+  try {
+    const txapelketaObj = [
+      txapelketa.izena,
+      txapelketa.dataOrdua,
+      txapelketa.lekua,
+      idTxapelketa
+    ];
+    const sqlQuery = 'UPDATE txapelketa SET izena = ?, dataOrdua = ?, lekua = ? WHERE idTxapelketa = ?';
+    await dbConnection.execute(sqlQuery, txapelketaObj);
+    //addPrivateeNetworkHeaders(res);
+    res.status(200).json({ message: 'txapelketa updated' });
+  } catch (error) {
+    //addPrivateeNetworkHeaders(res);
+    res.status(500).json({ error: 'Error updating txapelketa' });
+  }
+};
 
-    catch(error){
-      //console.log(error);
-    }
-  };
-
- export const deleteTxapelketa = async (req, res) =>{
-   const idTxapelketa = parseInt(req.body.idTxapelketa);
-   const sqlQuery = 'DELETE FROM txapelketa WHERE idTxapelketa = ?';
-   await dbConnection.execute(sqlQuery, [idTxapelketa]);
-   res.status(200).json({ message: 'txapelketa deleted' });
- };
+export const deleteTxapelketa = async (req, res) => {
+  const idTxapelketa = parseInt(req.body.idTxapelketa);
+  if (isNaN(idTxapelketa)) {
+    //addPrivateeNetworkHeaders(res);
+    return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
+  }
+  const sqlQuery = 'DELETE FROM txapelketa WHERE idTxapelketa = ?';
+  try {
+    await dbConnection.execute(sqlQuery, [idTxapelketa]);
+    //addPrivateeNetworkHeaders(res);
+    res.status(200).json({ message: 'txapelketa deleted' });
+  } catch (error) {
+    //addPrivateeNetworkHeaders(res);
+    res.status(500).json({ error: 'Error deleting txapelketa' });
+  }
+};
 
 export const getInfoGuztia = async (req, res) => {
   const sqlQuery = `SELECT 
@@ -127,16 +143,12 @@ export const getInfoGuztia = async (req, res) => {
     t.izena AS txapelketaIzena,
     t.dataOrdua AS txapelketaData,
     t.lekua AS txapelketaLekua,
-    
-
     f.idFasea,
     f.izena AS faseIzena,
     f.egoera AS faseEgoera,
     f.hasiera AS faseHasiera,
     f.amaiera AS faseAmaiera,
     f.irizpidea AS faseIrizpidea,
-  
-
     e.idEzaugarria,
     e.izena AS ezaugarriaIzena,
     e.puntuakMin as puntuakMin,
@@ -149,86 +161,80 @@ LEFT JOIN fasea f ON t.idTxapelketa = f.idTxapelketa
 LEFT JOIN ezaugarria e ON f.idFasea = e.idFasea
 LEFT JOIN epaimahaikidea ep ON f.idFasea = ep.idFasea
 ORDER BY t.idTxapelketa, f.idFasea, e.idEzaugarria, ep.idEpaimahaikidea;
-`
+`;
   try {
     const [results] = await dbConnection.query(sqlQuery);
+    //addPrivateeNetworkHeaders(res);
     res.status(200).json(transformData(results));
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error retrieving data' });
   }
-
 };
-
 
 function transformData(data) {
   const txapelketakMap = new Map();
 
   data.forEach((row) => {
-    
-      if (!txapelketakMap.has(row.idTxapelketa)) {
-          txapelketakMap.set(row.idTxapelketa, {
-              idTxapelketa: row.idTxapelketa,
-              txapelketaIzena: row.txapelketaIzena,
-              txapelketaData: row.txapelketaData,
-              txapelketaLekua: row.txapelketaLekua,
-              faseak: []
-          });
-      }
-      const txapelketa = txapelketakMap.get(row.idTxapelketa);
+    if (!txapelketakMap.has(row.idTxapelketa)) {
+      txapelketakMap.set(row.idTxapelketa, {
+        idTxapelketa: row.idTxapelketa,
+        txapelketaIzena: row.txapelketaIzena,
+        txapelketaData: row.txapelketaData,
+        txapelketaLekua: row.txapelketaLekua,
+        faseak: []
+      });
+    }
+    const txapelketa = txapelketakMap.get(row.idTxapelketa);
 
-      
-      if (!row.idFasea) return;
+    if (!row.idFasea) return;
 
-      let fase = txapelketa.faseak.find(f => f.idFasea === row.idFasea);
-      if (!fase) {
-          fase = {
-              idFasea: row.idFasea,
-              faseIzena: row.faseIzena,
-              faseKodea: row.faseKodea,
-              faseEgoera: row.faseEgoera,
-              faseHasiera: row.faseHasiera,
-              faseAmaiera: row.faseAmaiera,
-              faseIrizpidea: row.faseIrizpidea,
-              ezaugarriak: [],
-              epaimahaikideak: []
-          };
-          txapelketa.faseak.push(fase);
-      }
+    let fase = txapelketa.faseak.find(f => f.idFasea === row.idFasea);
+    if (!fase) {
+      fase = {
+        idFasea: row.idFasea,
+        faseIzena: row.faseIzena,
+        faseKodea: row.faseKodea,
+        faseEgoera: row.faseEgoera,
+        faseHasiera: row.faseHasiera,
+        faseAmaiera: row.faseAmaiera,
+        faseIrizpidea: row.faseIrizpidea,
+        ezaugarriak: [],
+        epaimahaikideak: []
+      };
+      txapelketa.faseak.push(fase);
+    }
 
-      
-      if (row.idEzaugarria) {
-          const ezaugarriaExists = fase.ezaugarriak.some(e => e.idEzaugarria === row.idEzaugarria);
-          if (!ezaugarriaExists) {
-              fase.ezaugarriak.push({
-                  idEzaugarria: row.idEzaugarria,
-                  ezaugarriaIzena: row.ezaugarriaIzena,
-                  puntuakMin: row.puntuakMin,
-                  puntuakMax: row.puntuakMax
-                
-              });
-          }
+    if (row.idEzaugarria) {
+      const ezaugarriaExists = fase.ezaugarriak.some(e => e.idEzaugarria === row.idEzaugarria);
+      if (!ezaugarriaExists) {
+        fase.ezaugarriak.push({
+          idEzaugarria: row.idEzaugarria,
+          ezaugarriaIzena: row.ezaugarriaIzena,
+          puntuakMin: row.puntuakMin,
+          puntuakMax: row.puntuakMax
+        });
       }
+    }
 
-     
-      if (row.idEpaimahaikidea) {
-          const epaimahaikideaExists = fase.epaimahaikideak.some(ep => ep.idEpaimahaikidea === row.idEpaimahaikidea);
-          if (!epaimahaikideaExists) {
-              fase.epaimahaikideak.push({
-                  idEpaimahaikidea: row.idEpaimahaikidea,
-                  epaimahaikideaUsername: row.epaimahaikideaUsername
-              });
-          }
+    if (row.idEpaimahaikidea) {
+      const epaimahaikideaExists = fase.epaimahaikideak.some(ep => ep.idEpaimahaikidea === row.idEpaimahaikidea);
+      if (!epaimahaikideaExists) {
+        fase.epaimahaikideak.push({
+          idEpaimahaikidea: row.idEpaimahaikidea,
+          epaimahaikideaUsername: row.epaimahaikideaUsername
+        });
       }
+    }
   });
 
- 
   return Array.from(txapelketakMap.values());
 }
 
 export async function getTxapelketarenInfoGuztia(req, res) {
   const idTxapelketa = parseInt(req.params.idTxapelketa);
   if (isNaN(idTxapelketa)) {
+    //addPrivateeNetworkHeaders(res);
     return res.status(400).json({ error: 'You must enter a valid id as a parameter' });
   }
   const sqlQuery = `SELECT 
@@ -253,36 +259,31 @@ LEFT JOIN ezaugarria e ON e.idFasea = f.idFasea
 LEFT JOIN epaimahaikidea em ON em.idFasea = f.idFasea
 WHERE t.idTxapelketa = ?
 ORDER BY f.idFasea, e.idEzaugarria, em.idEpaimahaikidea;
-
-`
+`;
   try {
     const [results] = await dbConnection.query(sqlQuery, [idTxapelketa]);
+    //addPrivateeNetworkHeaders(res);
     res.status(200).json(transformData(results));
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error retrieving data' });
   }
-
-};
-
+}
 
 export const getTxapelketaAktiboa = async (req, res) => {
-  
   const sqlQuery = `SELECT * FROM txapelketa_aktiboak WHERE idTxapelketa = 1`;
 
   try {
     const [results] = await dbConnection.query(sqlQuery);
+    //addPrivateeNetworkHeaders(res);
     res.status(200).json(transformData(results));
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error retrieving data' });
   }
-
 };
 
 export const getTxapAktiboaFasEpaimahaikideakEzaugarriak = async (req, res) => {
-
-  
   const sqlQuery = `SELECT 
   f.idFasea, 
   f.izena as faseIzena,
@@ -290,7 +291,6 @@ export const getTxapAktiboaFasEpaimahaikideakEzaugarriak = async (req, res) => {
   f.egoera,
   f.hasiera,
   f.amaiera,
-  
   e.idEzaugarria, 
   e.izena as ezaugarriIzena, 
   e.puntuakMin,
@@ -306,18 +306,15 @@ WHERE tx.egoera = 1;
 `;
 
   try {
-
     const [results] = await dbConnection.query(sqlQuery);
-    
+    //addPrivateeNetworkHeaders(res);
     if (results.length === 0) {
       res.status(404).json({ error: 'Epaimahaikideak ezaugarriak not found' });
+    } else {
+      res.status(200).json(results);
     }
-
-    else{
-      res.status(200).json(results);}
   } catch (error) {
-    //console.log(error);
+    //addPrivateeNetworkHeaders(res);
     res.status(500).json({ error: 'Error retrieving data' });
   }
-
 };
