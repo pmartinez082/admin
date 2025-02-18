@@ -13,6 +13,7 @@ export const getTxapelketak = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -50,6 +51,7 @@ export const createNewTxapelketa = async (event) => {
         const response = await fetch(`${API_URL}/txapelketa/add`, {
          method: 'POST',
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -89,6 +91,7 @@ export const updateTxapelketa = async (event) => {
             method: 'PUT',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -120,6 +123,7 @@ export const getTxapelketa = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -149,6 +153,7 @@ const idTxapelketa = event.target.id.split('-')[1];
       method: 'DELETE',
         
    
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
            'Content-Type': 'application/json',
@@ -178,6 +183,7 @@ export const getTxapelketarenFaseak = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -205,6 +211,7 @@ export const getInfoGuztia = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -230,6 +237,7 @@ export const getTxapelketarenInfoGuztia = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -306,6 +314,7 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',

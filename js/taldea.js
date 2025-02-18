@@ -6,6 +6,7 @@ export const getTaldeak = async () => {
             method: 'GET',
               
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -40,6 +41,7 @@ export const createNewTaldea = async (event) => {
         const response = await fetch(`${API_URL}/taldea/add`, {
          method: 'POST',
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -70,6 +72,7 @@ export const getTaldea = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -98,6 +101,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -131,6 +135,7 @@ export const deleteTaldea = async (event) => {
             method: 'DELETE',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -159,6 +164,7 @@ export const getTaldearenEbaluazioak = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -185,6 +191,7 @@ export const getTaldeAktiboak = async () => {
             method: 'GET',
              
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',

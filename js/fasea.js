@@ -19,6 +19,7 @@ export const createNewFasea = async () => {
         const response = await fetch(`${API_URL}/fasea/add`, {
          method: 'POST', 
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -51,6 +52,7 @@ export const deleteFasea = async (event) => {
             method: 'DELETE',
               
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -86,6 +88,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
             method: 'GET',
              
            
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
@@ -195,6 +198,7 @@ export const egoeraAldatu = async (event) => {
             method: 'PUT',
             
            
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                   'Content-Type': 'application/json',

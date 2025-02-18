@@ -38,6 +38,7 @@ export const getEzaugarria = async () => {
             method: 'GET',
               
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
   'Content-Type': 'application/json',
@@ -67,6 +68,7 @@ export const getEzaugarria2 = async () => {
             method: 'GET',
               
 
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
        'Content-Type': 'application/json',
@@ -108,6 +110,7 @@ export const createNewEzaugarria = async () => {
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
              method: 'POST',     
     
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                        'Content-Type': 'application/json',

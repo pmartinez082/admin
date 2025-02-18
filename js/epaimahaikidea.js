@@ -29,6 +29,7 @@ export const createNewEpaimahaikidea = async () => {
             const response = await fetch(`${API_URL}/epaimahaikidea/add`, {
              method: 'POST',     
     
+cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
                        'Content-Type': 'application/json',
