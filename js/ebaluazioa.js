@@ -1,24 +1,19 @@
-
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 export const getEpailearenEbaluazioakFaseka = async (event) => {
     event.preventDefault();
     const idEpaimahaikidea = event.target.id.split('buttonEbaluazioak-')[1];   
     try {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/EpailearenEbaluazioakFaseka/${idEpaimahaikidea}`, {
-           
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-   'Content-Type': 'application/json',
-
-                
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-           
         });
         if (response.ok) {
             const ebaluazioak = await response.json();
@@ -49,17 +44,15 @@ export const getFasearenEbaluazioak = async (event) => {
     event.preventDefault();
     const idFasea = event.target.id.split('-')[1];
     try {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/FasearenEbaluazioak/${idFasea}`, {
             method: 'GET',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
@@ -85,17 +78,15 @@ mode: 'cors',headers: {
 
 export const getFaseAktiboarenEbaluazioak = async () => {
     try {
+        await(sendOptionsRequest(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`));
         const response = await fetch(`${API_URL}/ebaluazioa/get/faseAktiboarenEbaluazioak`, {
             method: 'GET',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();

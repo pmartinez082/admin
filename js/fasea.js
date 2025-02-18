@@ -1,4 +1,4 @@
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 
@@ -16,6 +16,7 @@ export const createNewFasea = async () => {
 
     try {
         if(!data.idTxapelketa||!data.izena||!data.irizpidea) return false;
+        await(sendOptionsRequest(`${API_URL}/fasea/add`));
         const response = await fetch(`${API_URL}/fasea/add`, {
          method: 'POST', 
 
@@ -48,6 +49,7 @@ export const deleteFasea = async (event) => {
     event.preventDefault();
 
     try {
+        await(sendOptionsRequest(`${API_URL}/fasea/delete/`));
         const response = await fetch(`${API_URL}/fasea/delete/`, {
             method: 'DELETE',
               
@@ -73,17 +75,9 @@ mode: 'cors',headers: {
     }
 };
 
-
-
-
-
-
-
-
-
-
 export const getFasearenEpaimahaikideakEzaugarriak = async () => {
     try {
+        await(sendOptionsRequest(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`));
         const response = await fetch(`${API_URL}/fasea/lortu/epaimahaikideak-ezaugarriak`, {
             method: 'GET',
              
@@ -194,6 +188,7 @@ export const egoeraAldatu = async (event) => {
         data: new Date().toISOString().split('T')[0],
     };
     try {
+        await(sendOptionsRequest(`${API_URL}/fasea/egoeraAldatu`));
         const response = await fetch(`${API_URL}/fasea/egoeraAldatu`, {
             method: 'PUT',
             

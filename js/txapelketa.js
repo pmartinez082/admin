@@ -1,36 +1,29 @@
 import * as konstanteak from './konstanteak.js';
 import {createClassesFromDataF} from './fasea.js' ;
-import {API_URL, MAC} from './konstanteak.js'
-
-
-
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 
 //TXAPELKETAK LORTU
 export const getTxapelketak = async () => {
-    
     try {
-        const response = await fetch(`${API_URL}/txapelketa/`, {    
+        await(sendOptionsRequest(`${API_URL}/txapelketa/`));
+        const response = await fetch(`${API_URL}/txapelketa/`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
             const txapelketak = [];
             data.forEach(txapelketa => {
                 txapelketak.push(new konstanteak.Txapelketa(txapelketa.idTxapelketa, txapelketa.lekua, txapelketa.izena, txapelketa.dataOrdua));  
-            
-        });
-        return txapelketak;
-    }}
-        catch (err) {
+            });
+            return txapelketak;
+        }
+    } catch (err) {
         //console.log(err);
     }
 };
@@ -48,24 +41,22 @@ export const createNewTxapelketa = async (event) => {
 
     try {
         if(!data.lekua||!data.dataOrdua||!data.izena) return false;
+        await(sendOptionsRequest(`${API_URL}/txapelketa/add`));
         const response = await fetch(`${API_URL}/txapelketa/add`, {
-         method: 'POST',
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            method: 'POST',
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });
 
         if (response.ok) {
-
             const responseData = await response.json();
             const idTxapelketa = responseData.idTxapelketa;
             document.getElementById('idTxapelketa').value = idTxapelketa;
-
             //console.log("Txapelketa ondo sortu da");
         } else {
             const error = await response.json();
@@ -75,7 +66,6 @@ mode: 'cors',headers: {
         //console.log(err);
     }
 };
-
 
 //TXAPELKETA EGUNERATU
 export const updateTxapelketa = async (event) => {  
@@ -87,15 +77,14 @@ export const updateTxapelketa = async (event) => {
         izena: document.getElementById('txapelketaIzena').value,
     };
     try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/update`));
         const response = await fetch(`${API_URL}/txapelketa/update`, {
             method: 'PUT',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });
@@ -111,85 +100,71 @@ mode: 'cors',headers: {
     }
 };
 
-
-
-
 //TXAPELKETA LORTU
 export const getTxapelketa = async () => {             
-    
     const idTxapelketa = document.getElementById('idTxapelketa').value;
     try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/${idTxapelketa}`));
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
-           return new konstanteak.Txapelketa(data.idTxapelketa, data.lekua, data.izena, data.dataOrdua);
-
+            return new konstanteak.Txapelketa(data.idTxapelketa, data.lekua, data.izena, data.dataOrdua);
         }
-        
-} catch (err) {
-    //console.log(err);
-}
-
+    } catch (err) {
+        //console.log(err);
+    }
 };
 
 //TXAPELKETA EZABATU
 export const deleteTxapelketa = async (event) => {
+    event.preventDefault();
+    const idTxapelketa = event.target.id.split('-')[1];
+    try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/delete/`));
+        const response = await fetch(`${API_URL}/txapelketa/delete/`, {
+            method: 'DELETE',
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({idTxapelketa:idTxapelketa}),
+        });
 
-event.preventDefault();
-const idTxapelketa = event.target.id.split('-')[1];
-  try {
-    const response = await fetch(`${API_URL}/txapelketa/delete/`, {
-      method: 'DELETE',
-        
-   
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-           'Content-Type': 'application/json',
-
-      },
-      body: JSON.stringify({idTxapelketa:idTxapelketa}),
-    });
-
-    if (response.ok) {
-      //console.log('txapelketa ezabatu da');
-    } else {
-      const error = await response.json();
-      alert(`Error: ${error.error}`);
+        if (response.ok) {
+            //console.log('txapelketa ezabatu da');
+        } else {
+            const error = await response.json();
+            alert(`Error: ${error.error}`);
+        }
+    } catch (err) {
+        alert('Error en la conexión con el servidor.');
+        //console.log(err);
     }
-  } catch (err) {
-    alert('Error en la conexión con el servidor.');
-    //console.log(err);
-  }
 };
 
 //TXAPELKETAREN FASEAK LORTU
 export const getTxapelketarenFaseak = async () => {
-    
     const idTxapelketa = document.getElementById('idTxapelketa').value;
     try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/${idTxapelketa}/faseak`));
         const response = await fetch(`${API_URL}/txapelketa/${idTxapelketa}/faseak`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
@@ -205,23 +180,19 @@ mode: 'cors',headers: {
 };
 
 export const getInfoGuztia = async () => {
-    
     try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/info-guztia`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
-           
             return createClassesFromData(data);
         }
     } catch (err) {
@@ -230,30 +201,27 @@ mode: 'cors',headers: {
 };
 
 export const getTxapelketarenInfoGuztia = async () => {
-    
     try {
         const idTxapelketa = document.getElementById('idTxapelketa').value;
+        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/info-guztia/${idTxapelketa}`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
-           
             return createClassesFromData(data);
         }
     } catch (err) {
         //console.log(err);
     }
 };
+
 function createClassesFromData(data) {
     const txapelketak = data.map(txData => {
         const txapelketa = new konstanteak.Txapelketa(
@@ -261,8 +229,6 @@ function createClassesFromData(data) {
             txData.txapelketaLekua,
             txData.txapelketaIzena,
             txData.txapelketaData
-            
-            
         );
 
         txData.faseak.forEach(faseData => {
@@ -273,10 +239,7 @@ function createClassesFromData(data) {
                 faseData.faseEgoera,
                 faseData.faseHasiera,
                 faseData.faseAmaiera,
-                faseData.faseIrizpidea,
-                
-
-
+                faseData.faseIrizpidea
             );
 
             faseData.ezaugarriak.forEach(ezaugarriaData => {
@@ -310,27 +273,22 @@ function createClassesFromData(data) {
 
 export const getTxapelketaAktiboarenInfo = async (req, res) => {
     try {
+        await(sendOptionsRequest(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`));
         const response = await fetch(`${API_URL}/txapelketa/lortu/aktiboaren-info-guztia`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
             return createClassesFromDataF(data);
-        }
-
-        else{
+        } else {
             return [];
         }
-
     } catch (error) {
         //console.log(error);
     }

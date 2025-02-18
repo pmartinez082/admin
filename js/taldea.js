@@ -1,16 +1,16 @@
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
+
 export const getTaldeak = async () => {
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/`));
         const response = await fetch(`${API_URL}/taldea/`, {
             method: 'GET',
-              
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
         });
         if (response.ok) {
@@ -38,14 +38,14 @@ export const createNewTaldea = async (event) => {
     if(!data.izena) return false;
     if(!data.telefonoa) data.telefonoa = "";
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/add`));
         const response = await fetch(`${API_URL}/taldea/add`, {
-         method: 'POST',
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            method: 'POST',
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         });
@@ -68,46 +68,37 @@ mode: 'cors',headers: {
 export const getTaldea = async () => {
     const id = document.getElementById('faseakTaula').getAttribute('data').split('-')[0];
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/${id}`));
         const response = await fetch(`${API_URL}/taldea/${id}`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
-           return new konstanteak.Taldea(data[0].idTaldea, data[0].izena, data[0].email, data[0].telefonoa, data[0].puntuakGuztira, data[0].egoera);    
-
-
+            return new konstanteak.Taldea(data[0].idTaldea, data[0].izena, data[0].email, data[0].telefonoa, data[0].puntuakGuztira, data[0].egoera);
         }
-        
-} catch (err) {
-    //console.log(err);
-}
-
+    } catch (err) {
+        //console.log(err);
+    }
 };
 
 export const getBaloratuGabekoTaldeak = async (event) => {
-   
     const idEpaimahaikidea = event.target.id.split('buttonTaldeak-')[1];
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`));
         const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
@@ -116,8 +107,7 @@ mode: 'cors',headers: {
                 taldeak.push(new konstanteak.Taldea(taldea.idTaldea, taldea.izena, taldea.email, taldea.telefonoa, taldea.puntuakGuztira, taldea.egoera));
             });
             return taldeak;
-        }
-        else{
+        } else {
             return [];
         }
     } catch (err) {
@@ -125,25 +115,21 @@ mode: 'cors',headers: {
     }
 };
 
-
 export const deleteTaldea = async (event) => {
     const idTaldea = event.target.id.split('-')[1];
     event.preventDefault();
-
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/delete/`));
         const response = await fetch(`${API_URL}/taldea/delete/`, {
             method: 'DELETE',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({idTaldea:idTaldea}),
         });
-
         if (response.ok) {
             //console.log('Taldea ezabatu da');
         } else {
@@ -157,47 +143,42 @@ mode: 'cors',headers: {
 };
 
 export const getTaldearenEbaluazioak = async () => {
-    
     const id = document.getElementById('idTaldea').value;
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/${id}/ebaluazioak`));
         const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();
             const ebaluazioak = [];
             data.forEach(ebaluazioa => {
-                ebaluazioak.push(new konstanteak.Ebaluazioa(ebaluazioa.idEbaluazioa, ebaluazioa.idTxapelketa,  ebaluazioa.izena, ebaluazioa.hasiera, ebaluazioa.amaiera, ebaluazioa.egoera, ebaluazioa.irizpidea));
+                ebaluazioak.push(new konstanteak.Ebaluazioa(ebaluazioa.idEbaluazioa, ebaluazioa.idTxapelketa, ebaluazioa.izena, ebaluazioa.hasiera, ebaluazioa.amaiera, ebaluazioa.egoera, ebaluazioa.irizpidea));
             });
             return ebaluazioak;
         }
     } catch (err) {
         //console.log(err);
     }
-};  
+};
 
 export const getTaldeAktiboak = async () => {
     try {
+        await(sendOptionsRequest(`${API_URL}/taldea/get/aktiboak`));
         const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
             method: 'GET',
-             
-
-cache: 'no-cache',
-targetAddressSpace: 'private',
-mode: 'cors',headers: {
-                   'Content-Type': 'application/json',
-
+            cache: 'no-cache',
+            targetAddressSpace: 'private',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            
         });
         if (response.ok) {
             const data = await response.json();

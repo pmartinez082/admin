@@ -1,4 +1,4 @@
-import {API_URL, MAC} from './konstanteak.js'
+import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
 import * as konstanteak from './konstanteak.js';
 export function getEzaugarriakArray(){
     const idFasea = document.getElementById('idFasea').value;
@@ -31,9 +31,10 @@ export const getEzaugarria = async () => {
         const idEzaugarri  =   document.getElementsByName("ezaugarria")[0].getAttribute('data-idEzaugarria');
         
         if (!idEzaugarri) {
-            //console.log("Error: Missing idEzaugarria "+idEzaugarri);
+            //console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
+        await(sendOptionsRequest(`${API_URL}/ezaugarria/get/${idEzaugarri}`));
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
               
@@ -64,6 +65,7 @@ export const getEzaugarria2 = async () => {
     const id = document.getElementById('faseakTaula');
     const idEzaugarria = id.getAttribute('data').split('-')[1];
     try {
+        await(sendOptionsRequest(`${API_URL}/ezaugarria/${idEzaugarria}`));
         const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
               
@@ -107,9 +109,10 @@ export const createNewEzaugarria = async () => {
             ponderazioa: getEzaugarriakArray()[i].ponderazioa 
         };
         try {
+            await(sendOptionsRequest(`${API_URL}/ezaugarria/add`));
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
              method: 'POST',     
-    
+  
 cache: 'no-cache',
 targetAddressSpace: 'private',
 mode: 'cors',headers: {
