@@ -32,6 +32,7 @@ export const createNewEpaimahaikidea = async () => {
 //cache: 'no-cache',
 //targetAddressSpace: 'private',
 mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
                        'Content-Type': 'application/json',
 
                 },

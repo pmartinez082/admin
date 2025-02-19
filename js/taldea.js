@@ -9,6 +9,7 @@ export const getTaldeak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -43,6 +44,7 @@ export const createNewTaldea = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -72,6 +74,7 @@ export const getTaldea = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -93,6 +96,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -121,6 +125,7 @@ export const deleteTaldea = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({idTaldea:idTaldea}),
@@ -146,6 +151,7 @@ export const getTaldearenEbaluazioak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -170,6 +176,7 @@ export const getTaldeAktiboak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });

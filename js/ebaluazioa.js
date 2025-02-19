@@ -11,6 +11,7 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -49,6 +50,7 @@ export const getFasearenEbaluazioak = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -82,6 +84,7 @@ export const getFaseAktiboarenEbaluazioak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });

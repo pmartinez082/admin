@@ -21,6 +21,7 @@ export const createNewFasea = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -52,6 +53,7 @@ export const deleteFasea = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(idFasea),
@@ -77,6 +79,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -178,6 +181,7 @@ export const egoeraAldatu = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),

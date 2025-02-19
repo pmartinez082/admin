@@ -11,6 +11,7 @@ export const getTxapelketak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -46,6 +47,7 @@ export const createNewTxapelketa = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -81,6 +83,7 @@ export const updateTxapelketa = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
@@ -107,6 +110,7 @@ export const getTxapelketa = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -130,6 +134,7 @@ export const deleteTxapelketa = async (event) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({idTxapelketa:idTxapelketa}),
@@ -157,6 +162,7 @@ export const getTxapelketarenFaseak = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -181,6 +187,7 @@ export const getInfoGuztia = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -202,6 +209,7 @@ export const getTxapelketarenInfoGuztia = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -271,6 +279,7 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });

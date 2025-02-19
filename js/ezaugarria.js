@@ -39,6 +39,7 @@ export const getEzaugarria = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -68,6 +69,7 @@ export const getEzaugarria2 = async () => {
             //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
+   'ngrok-skip-browser-warning': 'true',
                 'Content-Type': 'application/json',
             },
         });
@@ -104,6 +106,7 @@ export const createNewEzaugarria = async () => {
                 //targetAddressSpace: 'private',
                 mode: 'cors',
                 headers: {
+   'ngrok-skip-browser-warning': 'true',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),

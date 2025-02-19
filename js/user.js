@@ -12,6 +12,7 @@ export const getEpaileak = async () => {
             //cache: 'no-cache',
             //targetAddressSpace: 'private',
             mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
             'Content-Type': 'application/json',
 
             },
@@ -43,6 +44,7 @@ export const verifyUser = async () => {
 //cache: 'no-cache',
 //targetAddressSpace: 'private',
 mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
    'Content-Type': 'application/json',
 
             },
@@ -71,6 +73,7 @@ export const findUser = async () => {
 //cache: 'no-cache',
 //targetAddressSpace: 'private',
 mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
                    'Content-Type': 'application/json',
 
             },
@@ -104,6 +107,7 @@ export const getRole = async (user) => {
 //cache: 'no-cache',
 //targetAddressSpace: 'private',
 mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
                    'Content-Type': 'application/json',
 
             },
@@ -135,6 +139,7 @@ export const createNewUser = async () => {
 //cache: 'no-cache',
 //targetAddressSpace: 'private',
 mode: 'cors',headers: {
+   'ngrok-skip-browser-warning': 'true',
                    'Content-Type': 'application/json',
 
             },
