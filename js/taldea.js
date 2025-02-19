@@ -1,13 +1,12 @@
-import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from "./konstanteak.js";
 
 export const getTaldeak = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/`, 'GET'));
         const response = await fetch(`${API_URL}/taldea/`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,11 +37,10 @@ export const createNewTaldea = async (event) => {
     if(!data.izena) return false;
     if(!data.telefonoa) data.telefonoa = "";
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/add`, 'POST'));
         const response = await fetch(`${API_URL}/taldea/add`, {
             method: 'POST',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,11 +66,10 @@ export const createNewTaldea = async (event) => {
 export const getTaldea = async () => {
     const id = document.getElementById('faseakTaula').getAttribute('data').split('-')[0];
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/${id}`, 'GET'));
         const response = await fetch(`${API_URL}/taldea/${id}`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,11 +87,10 @@ export const getTaldea = async () => {
 export const getBaloratuGabekoTaldeak = async (event) => {
     const idEpaimahaikidea = event.target.id.split('buttonTaldeak-')[1];
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, 'GET'));
         const response = await fetch(`${API_URL}/taldea/${idEpaimahaikidea}/baloratu-gabekoak`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,11 +115,10 @@ export const deleteTaldea = async (event) => {
     const idTaldea = event.target.id.split('-')[1];
     event.preventDefault();
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/delete/`, 'DELETE'));
         const response = await fetch(`${API_URL}/taldea/delete/`, {
             method: 'DELETE',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -145,11 +140,10 @@ export const deleteTaldea = async (event) => {
 export const getTaldearenEbaluazioak = async () => {
     const id = document.getElementById('idTaldea').value;
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/${id}/ebaluazioak`, 'GET'));
         const response = await fetch(`${API_URL}/taldea/${id}/ebaluazioak`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -170,11 +164,10 @@ export const getTaldearenEbaluazioak = async () => {
 
 export const getTaldeAktiboak = async () => {
     try {
-        await(sendOptionsRequest(`${API_URL}/taldea/get/aktiboak`, 'GET'));
         const response = await fetch(`${API_URL}/taldea/get/aktiboak`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',

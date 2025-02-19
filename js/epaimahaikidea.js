@@ -1,4 +1,4 @@
-import { API_URL, sendOptionsRequest } from "./konstanteak.js";
+import { API_URL } from "./konstanteak.js";
 import * as konstanteak from "./konstanteak.js";
 
 
@@ -26,12 +26,11 @@ export const createNewEpaimahaikidea = async () => {
             idFasea: document.getElementById('idFasea').value
         };
         try {
-            await(sendOptionsRequest(`${API_URL}/epaimahaikidea/add`, 'POST'));
             const response = await fetch(`${API_URL}/epaimahaikidea/add`, {
              method: 'POST',     
     
-cache: 'no-cache',
-targetAddressSpace: 'private',
+//cache: 'no-cache',
+//targetAddressSpace: 'private',
 mode: 'cors',headers: {
                        'Content-Type': 'application/json',
 

@@ -1,4 +1,4 @@
-import {API_URL, MAC, sendOptionsRequest} from './konstanteak.js'
+import {API_URL, MAC} from './konstanteak.js'
 import * as konstanteak from './konstanteak.js';
 
 export function getEzaugarriakArray(){
@@ -33,11 +33,10 @@ export const getEzaugarria = async () => {
             //console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
-        await(sendOptionsRequest(`${API_URL}/ezaugarria/get/${idEzaugarri}`, 'GET'));
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,11 +62,10 @@ export const getEzaugarria2 = async () => {
     const id = document.getElementById('faseakTaula');
     const idEzaugarria = id.getAttribute('data').split('-')[1];
     try {
-        await(sendOptionsRequest(`${API_URL}/ezaugarria/${idEzaugarria}`, 'GET'));
         const response = await fetch(`${API_URL}/ezaugarria/${idEzaugarria}`, {
             method: 'GET',
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,11 +98,10 @@ export const createNewEzaugarria = async () => {
             ponderazioa: getEzaugarriakArray()[i].ponderazioa 
         };
         try {
-            await(sendOptionsRequest(`${API_URL}/ezaugarria/add`, 'POST'));
             const response = await fetch(`${API_URL}/ezaugarria/add`, {
                 method: 'POST',
-                cache: 'no-cache',
-                targetAddressSpace: 'private',
+                //cache: 'no-cache',
+                //targetAddressSpace: 'private',
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',

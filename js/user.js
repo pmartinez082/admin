@@ -9,8 +9,8 @@ export const getEpaileak = async () => {
             method: 'GET',
               
 
-            cache: 'no-cache',
-            targetAddressSpace: 'private',
+            //cache: 'no-cache',
+            //targetAddressSpace: 'private',
             mode: 'cors',headers: {
             'Content-Type': 'application/json',
 
@@ -40,8 +40,8 @@ export const verifyUser = async () => {
         const response = await fetch(`${API_URL}/${Date.now()}/user/verify`, {
          method: 'POST',
            
-cache: 'no-cache',
-targetAddressSpace: 'private',
+//cache: 'no-cache',
+//targetAddressSpace: 'private',
 mode: 'cors',headers: {
    'Content-Type': 'application/json',
 
@@ -68,8 +68,8 @@ export const findUser = async () => {
         const response = await fetch(`${API_URL}/${Date.now()}/user/find`, {
          method: 'POST',
 
-cache: 'no-cache',
-targetAddressSpace: 'private',
+//cache: 'no-cache',
+//targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
@@ -101,8 +101,8 @@ export const getRole = async (user) => {
         const response = await fetch(`${API_URL}/${Date.now()}/user/role`, {
          method: 'POST',
 
-cache: 'no-cache',
-targetAddressSpace: 'private',
+//cache: 'no-cache',
+//targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
@@ -132,8 +132,8 @@ export const createNewUser = async () => {
         const response = await fetch(`${API_URL}/${Date.now()}/user/add`, {
          method: 'POST',
 
-cache: 'no-cache',
-targetAddressSpace: 'private',
+//cache: 'no-cache',
+//targetAddressSpace: 'private',
 mode: 'cors',headers: {
                    'Content-Type': 'application/json',
 
