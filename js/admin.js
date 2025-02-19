@@ -633,7 +633,7 @@ export async function kalkuluakBistaratu(){
     const taula = document.createElement('table');
     taula.classList.add('taula');
     const taldeak = await ta.getTaldeak();
-    //console.log(taldeak);
+    console.log(taldeak);
     taldeak.sort((a, b) => {
        
         if ((a.egoera === 0 || a.egoera === 1) && b.egoera === 2) return -1;
