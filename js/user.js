@@ -1,6 +1,6 @@
 import * as konstanteak from './konstanteak.js';
 import 'https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js';  
-import {API_URL, sendOptionsRequest} from './konstanteak.js'
+import {API_URL } from './konstanteak.js'
 
 export const getEpaileak = async () => {
     try {
