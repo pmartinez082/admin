@@ -58,9 +58,9 @@
       deferredPrompt.prompt();
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
-        //console.log('El usuario aceptó la instalación');
+        console.log('El usuario aceptó la instalación');
       } else {
-        //console.log('El usuario rechazó la instalación');
+        console.log('El usuario rechazó la instalación');
       }
       deferredPrompt = null;
       installButton.style.display = 'none';

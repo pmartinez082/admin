@@ -26,18 +26,18 @@ export const createNewFasea = async () => {
             body: JSON.stringify(data),
         });
         if (response.ok) {
-            //console.log("fasea ondo sortu da");
+            console.log("fasea ondo sortu da");
             const responseData = await response.json();
             const idFasea = responseData.idFasea;
             document.getElementById('idFasea').value = idFasea;
             return true;
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     } catch (err) {
         alert('Errorea');
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -58,14 +58,14 @@ export const deleteFasea = async (event) => {
         });
 
         if (response.ok) {
-            //console.log('Fasea ezabatu da');
+            console.log('Fasea ezabatu da');
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     } catch (err) {
-        //console.log('Error.');
-        //console.log(err);
+        console.log('Error.');
+        console.log(err);
     }
 };
 
@@ -85,7 +85,7 @@ export const getFasearenEpaimahaikideakEzaugarriak = async () => {
             return createClassesFromDataF(data);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -146,7 +146,7 @@ export function createClassesFromDataF(data) {
                 null,
                 ezData.ponderazioa
             );
-            //console.log(ezData.ponderazioa+ "ponderazioa");
+            console.log(ezData.ponderazioa+ "ponderazioa");
             fase.ezaugarriak.push(ezaugarria);
         });
 
@@ -183,13 +183,13 @@ export const egoeraAldatu = async (event) => {
             body: JSON.stringify(data),
         });
         if (response.ok) {
-            //console.log('Fasea egoera aldatu da');
+            console.log('Fasea egoera aldatu da');
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     } catch (err) {
         alert('Errorea');
-        //console.log(err);
+        console.log(err);
     }
 };

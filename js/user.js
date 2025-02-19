@@ -24,11 +24,11 @@ export const getEpaileak = async () => {
                 epaileak.push(new konstanteak.user(epaile.username, epaile.email, epaile.password, epaile.role));
                 
             });
-            //console.log(epaileak);
+            console.log(epaileak);
             return epaileak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -52,11 +52,11 @@ mode: 'cors',headers: {
             const data = await response.json();
             localStorage.setItem('token', data.token);
             
-            //console.log(data);
+            console.log(data);
             return data;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 
 };
@@ -78,11 +78,11 @@ mode: 'cors',headers: {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             return data;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 
 };
@@ -111,11 +111,11 @@ mode: 'cors',headers: {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             return data;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 
 };
@@ -142,11 +142,11 @@ mode: 'cors',headers: {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             return data;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 
 };
@@ -168,7 +168,7 @@ export async function autentifikatu(){
 
     const decodedToken = jwt_decode(token);
     const username = decodedToken.username;
-    //console.log(username);
+    console.log(username);
     const baimenduta = await getRole(username);
     if(baimenduta === 'admin'){
         return username;

@@ -227,7 +227,7 @@ export async function txapelketaBistaratu(i) {
        var txapelketak;
        if(i === 0) txapelketak = txapelketa;
        else txapelketak = info;
-        //console.log(txapelketak);
+        console.log(txapelketak);
 
         if (!txapelketak || txapelketak.length === 0) {
             const hutsik = document.createElement('h1');
@@ -274,7 +274,7 @@ export async function txapelketaBistaratu(i) {
             (txapelketa.faseak || []).forEach((fase) => {
                 const faseRow = ftaula.insertRow();
                 faseRow.insertCell().textContent = fase.izena || "-";
-                //console.log(fase.egoera);
+                console.log(fase.egoera);
                 faseRow.insertCell().textContent =
             
                     parseInt(fase.egoera) === 0
@@ -306,7 +306,7 @@ export async function txapelketaBistaratu(i) {
             });
         });
     } catch (error) {
-        //console.log("Errorea txapelketak bistaratzean:", error);
+        console.log("Errorea txapelketak bistaratzean:", error);
     }
 }       
 
@@ -324,7 +324,7 @@ export async function faseakBistaratu() {
         document.body.appendChild(mezua);
         return false;
     }
-    //console.log(faseak);
+    console.log(faseak);
     const row1 = faseakTaula.insertRow();
     row1.insertCell().textContent = "Fase Izena";
     row1.insertCell().textContent = "Hasiera";
@@ -337,7 +337,7 @@ export async function faseakBistaratu() {
     faseak.forEach((fase) => {
   
         const eza = fase.ezaugarriak || [];
-        //console.log(eza);
+        console.log(eza);
         const ep = fase.epaimahaikideak || [];
         const row = faseakTaula.insertRow();
         row.insertCell().textContent = fase.izena || "";
@@ -345,7 +345,7 @@ export async function faseakBistaratu() {
         row.insertCell().textContent = fase.amaiera || "";
         const buttonEgoera = document.createElement('button');
         buttonEgoera.id = `buttonEgoera-${fase.idFasea}`;
-        //console.log(fase.egoera);
+        console.log(fase.egoera);
         if (parseInt(fase.egoera) === 0) {
             buttonEgoera.textContent = "Hasi";
         } else if (parseInt(fase.egoera) === 1) {
@@ -495,8 +495,8 @@ async function ebaluazioakBistaratu(event, epaimahaikidea) {
             faseakTaula.setAttribute('data', ebaluazioa.idTaldea + "-" + ebaluazioa.idEzaugarria);
             const ezaugarria = await ez.getEzaugarria2();
             const taldea = await ta.getTaldea();
-            //console.log(ezaugarria);
-            //console.log(taldea);
+            console.log(ezaugarria);
+            console.log(taldea);
             row.insertCell().textContent = ebaluazioa.puntuak;
             row.insertCell().textContent = ebaluazioa.noiz;
             row.insertCell().textContent = ezaugarria.izena;

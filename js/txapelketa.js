@@ -23,7 +23,7 @@ export const getTxapelketak = async () => {
             return txapelketak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -55,13 +55,13 @@ export const createNewTxapelketa = async (event) => {
             const responseData = await response.json();
             const idTxapelketa = responseData.idTxapelketa;
             document.getElementById('idTxapelketa').value = idTxapelketa;
-            //console.log("Txapelketa ondo sortu da");
+            console.log("Txapelketa ondo sortu da");
         } else {
             const error = await response.json();
             alert(`Error: ${error.error}`);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -87,13 +87,13 @@ export const updateTxapelketa = async (event) => {
         });
 
         if (response.ok) {
-            //console.log("txapelketa eguneratua");
+            console.log("txapelketa eguneratua");
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -115,7 +115,7 @@ export const getTxapelketa = async () => {
             return new konstanteak.Txapelketa(data.idTxapelketa, data.lekua, data.izena, data.dataOrdua);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -136,14 +136,14 @@ export const deleteTxapelketa = async (event) => {
         });
 
         if (response.ok) {
-            //console.log('txapelketa ezabatu da');
+            console.log('txapelketa ezabatu da');
         } else {
             const error = await response.json();
             alert(`Error: ${error.error}`);
         }
     } catch (err) {
         alert('Error en la conexión con el servidor.');
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -169,7 +169,7 @@ export const getTxapelketarenFaseak = async () => {
             return faseak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -189,7 +189,7 @@ export const getInfoGuztia = async () => {
             return createClassesFromData(data);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -210,7 +210,7 @@ export const getTxapelketarenInfoGuztia = async () => {
             return createClassesFromData(data);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -281,6 +281,6 @@ export const getTxapelketaAktiboarenInfo = async (req, res) => {
             return [];
         }
     } catch (error) {
-        //console.log(error);
+        console.log(error);
     }
 };

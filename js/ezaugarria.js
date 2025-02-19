@@ -13,7 +13,7 @@ export function getEzaugarriakArray(){
         if(ponderazioa[i].value !== ""){
         b += parseFloat(ponderazioa[i].value);
         }
-        //console.log(b);
+        console.log(b);
         if (ezaugarriaIzena[i].value !== "" && eMin[i].value !== "" && eMax[i].value !== "") {
             ezaugarriak.push(new konstanteak.Ezaugarria(0,ezaugarriaIzena[i].value, eMax[i].value, eMin[i].value, idFasea, ponderazioa[i].value));
         }
@@ -30,7 +30,7 @@ export const getEzaugarria = async () => {
         const idEzaugarri  =   document.getElementsByName("ezaugarria")[0].getAttribute('data-idEzaugarri');
         
         if (!idEzaugarri) {
-            //console.log("Error: Missing idEzaugarri "+idEzaugarri);
+            console.log("Error: Missing idEzaugarri "+idEzaugarri);
             return null;
         }
         const response = await fetch(`${API_URL}/ezaugarria/get/${idEzaugarri}`, {
@@ -44,16 +44,16 @@ export const getEzaugarria = async () => {
         });
 
         if (!response.ok) {
-            //console.log(`Error: Received status ${response.status} from API`);
+            console.log(`Error: Received status ${response.status} from API`);
             return null;
         }
 
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
         return new konstanteak.Ezaugarria(data[0].idEzaugarria, data[0].izena, data[0].puntuakMax, data[0].puntuakMin, data[0].idFasea, data[0].ponderazioa);
         
     } catch (err) {
-        //console.log("Network or parsing error:", err);
+        console.log("Network or parsing error:", err);
         return null;
     }
 };
@@ -73,11 +73,11 @@ export const getEzaugarria2 = async () => {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             return new konstanteak.Ezaugarria(data[0].idEzaugarria, data[0].izena, data[0].puntuakMax, data[0].puntuakMin, data[0].ponderazioa);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
         
@@ -111,14 +111,14 @@ export const createNewEzaugarria = async () => {
             if (response.ok) {
                 const responseData = await response.json();
                 //const idEzaugarria= responseData.idEzaugarria;
-                //console.log("ezaugarria ondo sortu da");
+                console.log("ezaugarria ondo sortu da");
             } else {
                 const error = await response.json();
-                //console.log(`Error: ${error.error}`);
+                console.log(`Error: ${error.error}`);
             }
         } catch (err) {
             alert('Errorea');
-            //console.log(err);
+            console.log(err);
         }
         i = i + 1;
     }

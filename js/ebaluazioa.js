@@ -16,7 +16,7 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
         });
         if (response.ok) {
             const ebaluazioak = await response.json();
-            //console.log(ebaluazioak);
+            console.log(ebaluazioak);
             if (ebaluazioak.length === 0) {
                 return [];
             }
@@ -26,16 +26,16 @@ export const getEpailearenEbaluazioakFaseka = async (event) => {
                 
                 ebaluazioakArray.push(new konstanteak.Ebaluazioa(ebaluazioa.idEbaluazioa, ebaluazioa.idEpaimahaikidea, ebaluazioa.idTaldea, ebaluazioa.idEzaugarria, ebaluazioa.puntuak, ebaluazioa.noiz));
             });
-            //console.log(ebaluazioakArray);
+            console.log(ebaluazioakArray);
             return ebaluazioakArray;
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     }
     catch (err) {
         alert('Errorea');
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -54,22 +54,22 @@ export const getFasearenEbaluazioak = async (event) => {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             const d = [];
             data.forEach(ebaluazioa => {
                 d.push(ebaluazioa);
             });
-            //console.log(d);
+            console.log(d);
             return d;
         }
         else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     }
     catch (err) {
         alert('Errorea');
-        //console.log(err);
+        console.log(err);
     }
 
 }
@@ -87,10 +87,10 @@ export const getFaseAktiboarenEbaluazioak = async () => {
         });
         if (response.ok) {
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             return data;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };

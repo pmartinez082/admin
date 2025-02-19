@@ -42,14 +42,14 @@ mode: 'cors',headers: {
                 const responseData = await response.json();
                 const idEpaimahaikidea= responseData.idEpaimahaikidea;
             
-                //console.log("epaimahaikidea ondo sortu da");
+                console.log("epaimahaikidea ondo sortu da");
             } else {
                 const error = await response.json();
-                //console.log(`Error: ${error.error}`);
+                console.log(`Error: ${error.error}`);
             }
         } catch (err) {
             alert('Errorea');
-            //console.log(err);
+            console.log(err);
         }
         i = i + 1;
     }

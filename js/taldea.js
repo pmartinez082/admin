@@ -21,7 +21,7 @@ export const getTaldeak = async () => {
             return taldeak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -48,18 +48,18 @@ export const createNewTaldea = async (event) => {
             body: JSON.stringify(data),
         });
         if (response.ok) {
-            //console.log("taldea ondo sortu da");
+            console.log("taldea ondo sortu da");
             const responseData = await response.json();
             const idTaldea = responseData.idTaldea;
             return idTaldea;
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
             return false;
         }
     } catch (err) {
         alert('Errorea');
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -80,7 +80,7 @@ export const getTaldea = async () => {
             return new konstanteak.Taldea(data[0].idTaldea, data[0].izena, data[0].email, data[0].telefonoa, data[0].puntuakGuztira, data[0].egoera);
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -107,7 +107,7 @@ export const getBaloratuGabekoTaldeak = async (event) => {
             return [];
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -126,14 +126,14 @@ export const deleteTaldea = async (event) => {
             body: JSON.stringify({idTaldea:idTaldea}),
         });
         if (response.ok) {
-            //console.log('Taldea ezabatu da');
+            console.log('Taldea ezabatu da');
         } else {
             const error = await response.json();
-            //console.log(`Error: ${error.error}`);
+            console.log(`Error: ${error.error}`);
         }
     } catch (err) {
-        //console.log('Error.');
-        //console.log(err);
+        console.log('Error.');
+        console.log(err);
     }
 };
 
@@ -158,7 +158,7 @@ export const getTaldearenEbaluazioak = async () => {
             return ebaluazioak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 
@@ -182,6 +182,6 @@ export const getTaldeAktiboak = async () => {
             return taldeak;
         }
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
